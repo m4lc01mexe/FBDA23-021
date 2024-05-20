@@ -10,6 +10,210 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <title>WarnerBros | Movies</title>
+        <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .navbar {
+            width: 100%;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+        }
+
+        .menu-container {
+            display: flex;
+        }
+
+        .menu-list {
+            display: flex;
+            list-style: none;
+            padding: 0;
+        }
+
+        .menu-list-item {
+            margin: 0 10px;
+        }
+
+        .menu-list-item a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .profile-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .profile-picture {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+        }
+
+        .profile-text-container {
+            margin-left: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .toggle {
+            margin-left: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .content-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .featured-content {
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .movie-list-container {
+            margin-top: 40px;
+        }
+
+        .movie-list-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .movie-list-wrapper {
+            display: flex;
+            overflow-x: auto;
+        }
+
+        .movie-list {
+            display: flex;
+        }
+
+        .movie-list-item {
+            margin: 0 10px;
+            flex: 0 0 auto;
+            width: 200px;
+        }
+
+        .movie-list-item-img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .movie-list-item-title {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .movie-list-item-button {
+            background-color: #0066bf;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        footer li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .menu-container {
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+            }
+
+            .menu-list {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .menu-list-item {
+                margin: 10px 0;
+            }
+
+            .profile-container {
+                margin-top: 10px;
+                justify-content: space-between;
+                width: 100%;
+            }
+
+            .content-container {
+                padding: 10px;
+            }
+
+            .movie-list-wrapper {
+                flex-direction: column;
+            }
+
+            .movie-list {
+                flex-direction: column;
+            }
+
+            .movie-list-item {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+        </style>
+
 </head>
 
 <body>
