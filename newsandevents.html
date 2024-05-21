@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>WarnerBros | News and Events</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .navbar {
+            width: 100%;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+        }
+
+        .menu-container {
+            display: flex;
+        }
+
+        .menu-list {
+            display: flex;
+            list-style: none;
+            padding: 0;
+        }
+
+        .menu-list-item {
+            margin: 0 10px;
+        }
+
+        .menu-list-item a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .profile-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .profile-picture {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+        }
+
+        .profile-text-container {
+            margin-left: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .toggle {
+            margin-left: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .content-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .featured-content {
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .movie-list-container {
+            margin-top: 40px;
+        }
+
+        .movie-list-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .movie-list-wrapper {
+            display: flex;
+            overflow-x: auto;
+        }
+
+        .movie-list {
+            display: flex;
+        }
+
+        .movie-list-item {
+            margin: 0 10px;
+            flex: 0 0 auto;
+            width: 200px;
+        }
+
+        .movie-list-item-img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .movie-list-item-title {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .movie-list-item-button {
+            background-color: #0066bf;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        footer li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .menu-container {
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+            }
+
+            .menu-list {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .menu-list-item {
+                margin: 10px 0;
+            }
+
+            .profile-container {
+                margin-top: 10px;
+                justify-content: space-between;
+                width: 100%;
+            }
+
+            .content-container {
+                padding: 10px;
+            }
+
+            .movie-list-wrapper {
+                flex-direction: column;
+            }
+
+            .movie-list {
+                flex-direction: column;
+            }
+
+            .movie-list-item {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+        </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-container">
+            <div class="logo-container">
+                <h1 class="logo">Warner<span style="color:rgb(0, 102, 191)">Bros</span></h1>
+            </div>
+            <div class="collapse navbar-collapse menu-container" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item menu-list-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item menu-list-item">
+                        <a class="nav-link" href="movies.html">Movies</a>
+                    </li>
+                    <li class="nav-item menu-list-item">
+                        <a class="nav-link" href="tvshows.html">TV Shows</a>
+                    </li>
+                    <li class="nav-item menu-list-item">
+                        <a class="nav-link" href="gamesandapps.html">Games & Apps</a>
+                    </li>
+                    <li class="nav-item menu-list-item">
+                        <a class="nav-link" href="brands.html">Collections</a>
+                    </li>
+                    <li class="nav-item menu-list-item active">
+                        <a class="nav-link" href="newsandevents.html">News & Events</a>
+                    </li>                    
+                    <li class="nav-item menu-list-item">
+                        <a class="nav-link" href="onlinestore.html">Store</a>
+                    </li>
+                    <li class="nav-item menu-list-item">
+                        <a class="nav-link" href="feedback.html">Feedback</a>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="profile-container">
+                <img class="profile-picture" src="Images/download.jpeg" alt="Profile Picture">
+                <div class="profile-text-container">
+                    <span class="profile-text">Profile</span>
+                    <i class="fas fa-caret-down"></i>
+                </div>
+                <div class="toggle">
+                    <i class="fas fa-moon toggle-icon"></i>
+                    <i class="fas fa-sun toggle-icon"></i>
+                    <div class="toggle-ball"></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-title">News and Events</h1>
+                <p class="page-subtitle">Stay updated with the latest news, upcoming events, and community activities from Warner Bros.</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <h2 class="section-title">Press Releases</h2>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <h5 class="news-title">New Movie Releases</h5>
+                        <p class="news-date">May 19, 2024</p>
+                        <p class="news-desc">Warner Bros. announces the release of three new blockbuster movies this summer...</p>
+                    </li>
+                    <li class="list-group-item">
+                        <h5 class="news-title">CEO Statement</h5>
+                        <p class="news-date">April 25, 2024</p>
+                        <p class="news-desc">Our CEO shares insights on the future of entertainment and upcoming projects...</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-md-4">
+                <h2 class="section-title">Upcoming Events</h2>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <h5 class="event-title">Comic-Con 2024</h5>
+                        <p class="event-date">July 18-21, 2024</p>
+                        <p class="event-desc">Join us at Comic-Con for exclusive previews and panels with your favorite stars...</p>
+                    </li>
+                    <li class="list-group-item">
+                        <h5 class="event-title">Movie Premiere: "The Batman"</h5>
+                        <p class="event-date">June 15, 2024</p>
+                        <p class="event-desc">Attend the red carpet premiere of "The Batman" in Los Angeles...</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-md-4">
+                <h2 class="section-title">In the Community</h2>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <h5 class="community-title">Environmental Initiative</h5>
+                        <p class="community-date">May 10, 2024</p>
+                        <p class="community-desc">Warner Bros. launches a new initiative to reduce carbon footprint...</p>
+                    </li>
+                    <li class="list-group-item">
+                        <h5 class="community-title">Charity Event</h5>
+                        <p class="community-date">April 30, 2024</p>
+                        <p class="community-desc">Join us for our annual charity event supporting local communities...</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
+
+<footer>
+    <div class="footer-container">
+        <p>TM & © 2024 Warner Bros. Entertainment Inc. All rights reserved</p>
+        <ul>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="terms-of-use.html">Terms of Use</a></li>
+            <li><a href="contactus.html">Contact Us</a></li>
+        </ul>
+    </div>
+</footer>
+
+</html>

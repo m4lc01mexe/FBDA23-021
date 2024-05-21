@@ -6,11 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-    <title>WarnerBros | Feedback</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>About Warner Bros</title>
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -217,44 +218,49 @@
 </head>
 
 <body>
-    <div class="navbar">
+    <nav class="navbar navbar-expand-lg">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="navbar-container">
             <div class="logo-container">
                 <h1 class="logo">Warner<span style="color:rgb(0, 102, 191)">Bros</span></h1>
             </div>
-            <div class="menu-container">
-                <ul class="menu-list">
-                <li class="menu-list-item">
-                    <a href="index.html">Home</a>
-                </li>
-                <li class="menu-list-item">
-                    <a href="movies.html">Movies</a>
-                </li>
-                <li class="menu-list-item">
-                    <a href="tvshows.html">TV Shows</a>
-                </li>
-                <li class="menu-list-item">
-                    <a href="gamesandapps.html">Games & Apps</a>
-                </li>
-                <li class="menu-list-item">
-                    <a href="brands.html">Collections</a>
-                </li>
-                <li class="nav-item menu-list-item">
-                    <a class="nav-link" href="newsandevents.html">News</a>
-                </li>
-                <li class="menu-list-item">
-                    <a href="onlinestore.html">Store</a>
-                </li>
-                <li class="menu-list-item active">
-                    <a href="feedback.html">Feedback</a>
-                </li>           
-                <li class="nav-item menu-list-item">
-                    <a class="nav-link" href="aboutus.html">About</a>
-                </li>
+            <div class="collapse navbar-collapse menu-container" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item menu-list-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item menu-list-item">
+                        <a class="nav-link" href="movies.html">Movies</a>
+                    </li>
+                    <li class="nav-item menu-list-item">
+                        <a class="nav-link" href="tvshows.html">TV Shows</a>
+                    </li>
+                    <li class="nav-item menu-list-item">
+                        <a class="nav-link" href="gamesandapps.html">Games & Apps</a>
+                    </li>
+                    <li class="nav-item menu-list-item">
+                        <a class="nav-link" href="brands.html">Collections</a>
+                    </li>
+                    <li class="nav-item menu-list-item">
+                        <a class="nav-link" href="newsandevents.html">News</a>
+                    </li>                    
+                    <li class="nav-item menu-list-item">
+                        <a class="nav-link" href="onlinestore.html">Store</a>
+                    </li>
+                    <li class="nav-item menu-list-item">
+                        <a class="nav-link" href="feedback.html">Feedback</a>
+                    </li>
+                    <li class="nav-item menu-list-item active">
+                        <a class="nav-link" href="aboutus.html">About</a>
+                    </li>
+
+                </ul>
                 </ul>
             </div>
             <div class="profile-container">
-                <img class="profile-picture" src="Images/download.jpeg" alt="">
+                <img class="profile-picture" src="Images/download.jpeg" alt="Profile Picture">
                 <div class="profile-text-container">
                     <span class="profile-text">Profile</span>
                     <i class="fas fa-caret-down"></i>
@@ -266,28 +272,59 @@
                 </div>
             </div>
         </div>
+    </nav>
+
+    <div class="container about-container">
+        <h1>About Warner Bros</h1>
+
+        <section id="history">
+            <h2>History</h2>
+            <p>Warner Bros. Entertainment Inc. is an American diversified multinational mass media and entertainment conglomerate headquartered in Burbank, California. It is a subsidiary of AT&T's WarnerMedia and one of the "Big Five" major American film studios, as well as a member of the Motion Picture Association. Warner Bros. is known for its film studio division, the Warner Bros. Pictures Group, which includes Warner Bros. Pictures, New Line Cinema, the Warner Animation Group, and Castle Rock Entertainment.</p>
+        </section>
+
+        <section id="leadership">
+            <h2>Leadership</h2>
+            <div class="leadership">
+                <div class="leader">
+                    <img src="Images/leader1.webp" alt="Leader 1">
+                    <h3>Ann Sarnoff</h3>
+                    <p>Chair and CEO</p>
+                </div>
+                <div class="leader">
+                    <img src="Images/leader2.jpeg" alt="Leader 2">
+                    <h3>Tom Ascheim</h3>
+                    <p>President, Global Kids, Young Adults and Classics</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="awards">
+            <h2>Awards</h2>
+            <ul>
+                <li>Academy Awards</li>
+                <li>Golden Globe Awards</li>
+                <li>Emmy Awards</li>
+                <li>BAFTA Awards</li>
+            </ul>
+        </section>
     </div>
-    <section class="feedback-section">
-        <h1>Feedback Page</h1>
-        <p>We value your feedback and would love to hear from you!</p>
-        <form>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name"><br><br>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email"><br><br>
-            <label for="message">Message:</label>
-            <textarea id="message" name="message"></textarea><br><br>
-            <input type="submit" value="Submit">
-        </form>
-    </section>
+
     <script src="app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
 </body>
-<footer>TM & © 2024 Warner Bros. Entertainment Inc. All rights reserved
-    <ul>
-        <li><a href="privacy-policy.html">Privacy Policy</a></li>
-        <li><a href="terms-of-use.html">Terms of Use</a></li>
-        <li><a href="contactus.html">Contact Us</a></li>
-        
-    </ul>
+
+<footer>
+    <div class="footer-container">
+        <p>TM & © 2024 Warner Bros. Entertainment Inc. All rights reserved</p>
+        <ul>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="terms-of-use.html">Terms of Use</a></li>
+            <li><a href="contactus.html">Contact Us</a></li>
+        </ul>
+    </div>
 </footer>
-</html>  
+
+</html>

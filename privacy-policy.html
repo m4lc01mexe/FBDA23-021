@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>WarnerBros | Privacy Policy</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .navbar {
+            width: 100%;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+        }
+
+        .menu-container {
+            display: flex;
+        }
+
+        .menu-list {
+            display: flex;
+            list-style: none;
+            padding: 0;
+        }
+
+        .menu-list-item {
+            margin: 0 10px;
+        }
+
+        .menu-list-item a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .profile-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .profile-picture {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+        }
+
+        .profile-text-container {
+            margin-left: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .toggle {
+            margin-left: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .content-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .featured-content {
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .movie-list-container {
+            margin-top: 40px;
+        }
+
+        .movie-list-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .movie-list-wrapper {
+            display: flex;
+            overflow-x: auto;
+        }
+
+        .movie-list {
+            display: flex;
+        }
+
+        .movie-list-item {
+            margin: 0 10px;
+            flex: 0 0 auto;
+            width: 200px;
+        }
+
+        .movie-list-item-img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .movie-list-item-title {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .movie-list-item-button {
+            background-color: #0066bf;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        footer li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .menu-container {
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+            }
+
+            .menu-list {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .menu-list-item {
+                margin: 10px 0;
+            }
+
+            .profile-container {
+                margin-top: 10px;
+                justify-content: space-between;
+                width: 100%;
+            }
+
+            .content-container {
+                padding: 10px;
+            }
+
+            .movie-list-wrapper {
+                flex-direction: column;
+            }
+
+            .movie-list {
+                flex-direction: column;
+            }
+
+            .movie-list-item {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+        </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-container">
+            <div class="logo-container">
+                <h1 class="logo">Warner<span style="color:rgb(0, 102, 191)">Bros</span></h1>
+            </div>
+            <div class="collapse navbar-collapse menu-container" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item menu-list-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item menu-list-item">
+                        <a class="nav-link" href="movies.html">Movies</a>
+                    </li>
+                    <li class="nav-item menu-list-item">
+                        <a class="nav-link" href="tvshows.html">TV Shows</a>
+                    </li>
+                    <li class="nav-item menu-list-item">
+                        <a class="nav-link" href="gamesandapps.html">Games & Apps</a>
+                    </li>
+                    <li class="nav-item menu-list-item">
+                        <a class="nav-link" href="brands.html">Collections</a>
+                    </li>
+                    <li class="nav-item menu-list-item">
+                        <a class="nav-link" href="newsandevents.html">News</a>
+                    </li>
+                    <li class="nav-item menu-list-item">
+                        <a class="nav-link" href="onlinestore.html">Store</a>
+                    </li>
+                    <li class="nav-item menu-list-item">
+                        <a class="nav-link" href="feedback.html">Feedback</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="profile-container">
+                <img class="profile-picture" src="Images/download.jpeg" alt="Profile Picture">
+                <div class="profile-text-container">
+                    <span class="profile-text">Profile</span>
+                    <i class="fas fa-caret-down"></i>
+                </div>
+                <div class="toggle">
+                    <i class="fas fa-moon toggle-icon"></i>
+                    <i class="fas fa-sun toggle-icon"></i>
+                    <div class="toggle-ball"></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 class="page-title">Privacy Policy</h1>
+        <p>Last updated: [Date]</p>
+        <p>WarnerBros ("we", "our", "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website.</p>
+
+        <h2>1. Information We Collect</h2>
+        <p>We may collect information about you in a variety of ways. The information we may collect on the Site includes:</p>
+        <ul>
+            <li><strong>Personal Data:</strong> Personally identifiable information, such as your name, shipping address, email address, and telephone number.</li>
+            <li><strong>Derivative Data:</strong> Information our servers automatically collect when you access the Site, such as your IP address, browser type, operating system, access times, and the pages you have viewed directly before and after accessing the Site.</li>
+            <li><strong>Financial Data:</strong> Financial information, such as data related to your payment method (e.g., valid credit card number, card brand, expiration date) that we may collect when you purchase, order, return, exchange, or request information about our services from the Site.</li>
+            <li><strong>Data From Social Networks:</strong> User information from social networking sites, such as Facebook, Google+, Instagram, including your name, social network username, location, gender, birth date, email address, profile picture, and public data for contacts, if you connect your account to such social networks.</li>
+        </ul>
+
+        <h2>2. Use of Your Information</h2>
+        <p>We use the information we collect in various ways, including to:</p>
+        <ul>
+            <li>Create and manage your account.</li>
+            <li>Process your transactions.</li>
+            <li>Communicate with you about your account or transactions.</li>
+            <li>Send you promotional emails and offers.</li>
+            <li>Improve our website and services.</li>
+        </ul>
+
+        <h2>3. Disclosure of Your Information</h2>
+        <p>We may share information we have collected about you in certain situations. Your information may be disclosed as follows:</p>
+        <ul>
+            <li><strong>By Law or to Protect Rights:</strong> If we believe the release of information about you is necessary to respond to legal process, to investigate or remedy potential violations of our policies, or to protect the rights, property, and safety of others, we may share your information as permitted or required by any applicable law, rule, or regulation.</li>
+            <li><strong>Third-Party Service Providers:</strong> We may share your information with third parties that perform services for us or on our behalf, including payment processing, data analysis, email delivery, hosting services, customer service, and marketing assistance.</li>
+            <li><strong>Business Transfers:</strong> We may share or transfer your information in connection with, or during negotiations of, any merger, sale of company assets, financing, or acquisition of all or a portion of our business to another company.</li>
+        </ul>
+
+        <h2>4. Security of Your Information</h2>
+        <p>We use administrative, technical, and physical security measures to help protect your personal information. While we have taken reasonable steps to secure the personal information you provide to us, please be aware that despite our efforts, no security measures are perfect or impenetrable, and no method of data transmission can be guaranteed against any interception or other type of misuse.</p>
+
+        <h2>5. Policy for Children</h2>
+        <p>We do not knowingly solicit information from or market to children under the age of 13. If we learn that we have collected personal information from a child under age 13 without verification of parental consent, we will delete that information as quickly as possible. If you believe we might have any information from or about a child under 13, please contact us.</p>
+
+        <h2>6. Changes to This Privacy Policy</h2>
+        <p>We may update this Privacy Policy from time to time in order to reflect, for example, changes to our practices or for other operational, legal, or regulatory reasons. We will notify you of any changes by posting the new Privacy Policy on this page.</p>
+
+        <h2>7. Contact Us</h2>
+        <p>If you have questions or comments about this Privacy Policy, please contact us at:</p>
+        <p>Email: support@warnerbros.com</p>
+        <p>Address: 4000 Warner Blvd, Burbank, CA 91522, USA</p>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <p>TM & © 2024 Warner Bros. Entertainment Inc. All rights reserved</p>
+            <ul>
+                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                <li><a href="terms-of-use.html">Terms of Use</a></li>
+                <li><a href="contactus.html">Contact Us</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/scripts

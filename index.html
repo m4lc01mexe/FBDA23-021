@@ -14,8 +14,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
 
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+    
     <title>WarnerBros | Home</title>
-        <style>
+    <style>
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
@@ -218,11 +223,13 @@
             }
         }
         </style>
-
 </head>
 <body>
     <div class="navbar">
         <div class="navbar-container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="logo-container">
                 <h1 class="logo">Warner<span style="color:rgb(0, 102, 191)">Bros</span></h1>
             </div>
@@ -243,13 +250,20 @@
                     <li class="menu-list-item">
                         <a href="brands.html">Collections</a>
                     </li>
+                    <li class="nav-item menu-list-item">
+                        <a class="nav-link" href="newsandevents.html">News</a>
+                    </li>                    
                     <li class="menu-list-item">
                         <a href="onlinestore.html">Store</a>
                     </li>
                     <li class="menu-list-item">
                         <a href="feedback.html">Feedback</a>
                     </li>
+                    <li class="nav-item menu-list-item">
+                        <a class="nav-link" href="aboutus.html">About</a>
+                    </li>
 
+                </ul>
                 </ul>
             </div>
             <div class="profile-container">
@@ -283,37 +297,39 @@
                             <img class="movie-list-item-img" src="Images/poster9.jpg" alt="">
                             <span class="movie-list-item-title">Magic Mike's Last Dance</span>
                             <p class="movie-list-item-desc"></p>
-                            <button class="movie-list-item-button">Box Office</button>
+                            <button class="movie-list-item-button">
+                                <a href="Movie Pages/magicmike.html">View</a></button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="Images/batman.jpg" alt="">
                             <span class="movie-list-item-title">The Batman</span>
                             <p class="movie-list-item-desc">When a sadistic serial killer begins murdering key political figures in Gotham, Batman is forced to investigate the city's hidden corruption and question ...</p>
-                            <button class="movie-list-item-button">Box Office</button>
+                            <button class="movie-list-item-button">
+                                <a href="Movie Pages/magicmike.html">View</a></button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="Images/2.webp" alt="">
                             <span class="movie-list-item-title">The Matrix Resurrections</span>
                             <p class="movie-list-item-desc">To find out if his reality is a physical or mental construct, Mr. Anderson, aka Neo, will have to choose to follow the white rabbit once more.</p>
-                            <button class="movie-list-item-button">Box Office</button>
+                            <button class="movie-list-item-button">View</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="Images/poster8.jpg" alt="">
                             <span class="movie-list-item-title">Barbie</span>
-                            <p class="movie-list-item-desc"></p>
-                            <button class="movie-list-item-button">Box Office</button>
+                            <p class="movie-list-item-desc">To live in Barbie Land is to be a perfect being in a perfect place. Unless you have a full‐on existential crisis. Or you're a Ken</p>
+                            <button class="movie-list-item-button">View</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="Images/poster17.jpg" alt="">
                             <span class="movie-list-item-title">Suicide Squad</span>
-                            <p class="movie-list-item-desc"></p>
-                            <button class="movie-list-item-button">Box Office</button>
+                            <p class="movie-list-item-desc">Today's do-or-die assignment? Assemble a collection of cons, including Bloodsport, Peacemaker, Captain Boomerang, Ratcatcher 2, Savant, King Shark, Blackguard, ...</p>
+                            <button class="movie-list-item-button">View</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="Images/poster16.jpg" alt="">
                             <span class="movie-list-item-title">Wonder Woman</span>
-                            <p class="movie-list-item-desc"></p>
-                            <button class="movie-list-item-button">Box Office</button>
+                            <p class="movie-list-item-desc">When a pilot crashes and tells of conflict in the outside world, Diana, an Amazonian warrior in training, leaves home to fight a war, discovering her full ...</p>
+                            <button class="movie-list-item-button">View</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="img/1.jpg" alt="">
@@ -332,37 +348,37 @@
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="Images/poster3.jpg" alt="">
                             <span class="movie-list-item-title">BeetleJuice</span>
-                            <p class="movie-list-item-desc"></p>
+                            <p class="movie-list-item-desc">Beetlejuice is back! After an unexpected family tragedy, three generations of the Deetz family.</p>
                             <button class="movie-list-item-button">Coming Soon</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="Images/poster1.webp" alt="">
                             <span class="movie-list-item-title">Joker</span>
-                            <p class="movie-list-item-desc">.</p>
+                            <p class="movie-list-item-desc">Joker 2 is coming to cinemas in October and we finally have the first trailer to savour for the highly-anticipated sequel.</p>
                             <button class="movie-list-item-button">Coming Soon</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="Images/poster.jpg" alt="">
                             <span class="movie-list-item-title">Furiosa : A Mad Max</span>
-                            <p class="movie-list-item-desc"></p>
+                            <p class="movie-list-item-desc">As the world fell, young Furiosa is snatched from the Green Place of Many Mothers and falls into the hands of a great Biker Horde led by the Warlord Dementus.</p>
                             <button class="movie-list-item-button">Coming Soon</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="Images/poster15.jpg" alt="">
                             <span class="movie-list-item-title">Horizon : An American Saga Part One</span>
-                            <p class="movie-list-item-desc"></p>
+                            <p class="movie-list-item-desc">Families, friends and foes discover the lure of the Old West as the Civil War divides the country</p>
                             <button class="movie-list-item-button"></button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="Images/poster18.jpg" alt="">
                             <span class="movie-list-item-title">Godzilla X Kong : The New Empire</span>
-                            <p class="movie-list-item-desc"></p>
+                            <p class="movie-list-item-desc">Two ancient titans, Godzilla and Kong, clash in an epic battle as humans unravel their intertwined origins and connection to Skull Island's mysteries.</p>
                             <button class="movie-list-item-button">Box Office</button>
                         </div>                        
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="Images/poster19.jpg" alt="">
                             <span class="movie-list-item-title">Horizon : An American Saga Part Two</span>
-                            <p class="movie-list-item-desc"></p>
+                            <p class="movie-list-item-desc">The continuation of one story of the settlement of the American west. It follows the further adventures of characters first featured in Horizon: An American ...</p>
                             <button class="movie-list-item-button">Coming Soon</button>
                         </div>
                         <div class="movie-list-item">
@@ -379,13 +395,17 @@
         </div>
     </div>
     <script src="app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
 </body>
 <footer>TM & © 2024 Warner Bros. Entertainment Inc. All rights reserved
     <ul>
         <div class="menu-container">
-        <li><a href="#">Privacy Policy</a></li>
-        <li><a href="#">Terms of Use</a></li>
-        <li><a href="#">Contact Us</a></li>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="terms-of-use.html">Terms of Use</a></li>
+        <li><a href="contactus.html">Contact Us</a></li>
 
         </div>
     </ul>

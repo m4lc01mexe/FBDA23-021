@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -9,8 +10,15 @@
         href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+
     <title>WarnerBros | Movies</title>
-        <style>
+    <style>
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
@@ -213,7 +221,6 @@
             }
         }
         </style>
-
 </head>
 
 <body>
@@ -239,13 +246,18 @@
                 <li class="menu-list-item">
                     <a href="brands.html">Collections</a>
                 </li>
+                <li class="nav-item menu-list-item">
+                    <a class="nav-link" href="newsandevents.html">News</a>
+                </li>
                 <li class="menu-list-item">
                     <a href="onlinestore.html">Store</a>
                 </li>
                 <li class="menu-list-item">
                     <a href="feedback.html">Feedback</a>
                 </li>           
-            
+                <li class="nav-item menu-list-item">
+                    <a class="" href="aboutus.html">About</a>
+                </li>        
                 </ul>
             </div>
             <div class="profile-container">
@@ -270,7 +282,7 @@
                 <p class="featured-desc">When LeBron James and his young son Dom are trapped in a digital space by a rogue A.I., LeBron must get them home safe by leading Bugs, Lola Bunny and the whole gang of notoriously undisciplined Looney Tunes to victory over the A.I.'s digitized champions on the court: a powered-up roster of professional ...</p>
             </div>
             <div class="movie-list-container">
-                <h1 class="movie-list-title">New Releases</h1>
+                <h1 class="movie-list-title">Now Playing</h1>
                 <div class="movie-list-wrapper">
                     <div class="movie-list">
                         <div class="movie-list-item">
@@ -278,37 +290,38 @@
                             <span class="movie-list-item-title">Dune : Part Two</span>
                             <p class="movie-list-item-desc">A noble family becomes embroiled in a war for control over the galaxy's most valuable asset while its heir becomes troubled by visions of a dark future.</p>
                             <button class="movie-list-item-button">Out Now</button>
-                        </div>
+                        </div>                        
                         <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="Images/poster.jpg" alt="">
-                            <span class="movie-list-item-title">Furiosa : A Mad Max Saga</span>
-                            <p class="movie-list-item-desc">As the world fell, young Furiosa is snatched from the Green Place of Many Mothers and falls into the hands of a great Biker Horde led by the Warlord Dementus./p>
-                            <button class="movie-list-item-button">Coming Soon</button>
+                            <img class="movie-list-item-img" src="Images/poster1.webp" alt="">
+                            <span class="movie-list-item-title">Joker</span>
+                            <p class="movie-list-item-desc">Joker 2 is coming to cinemas in October and we finally have the first trailer to savour for the highly-anticipated sequel</p>
+                            <button class="movie-list-item-button">Out Now</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="Images/poster5.jpeg" alt="">
                             <span class="movie-list-item-title">Wonka</span>
-                            <p class="movie-list-item-desc"></p>
+                            <p class="movie-list-item-desc">With dreams of opening a shop in a city renowned for its chocolate, a young and poor Willy Wonka discovers that the industry is run by a cartel of greedy ...</p>
                             <button class="movie-list-item-button">Out Now</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="Images/3.webp" alt="">
                             <span class="movie-list-item-title">Godzilla X Kong: The New Empire</span>
                             <p class="movie-list-item-desc">Two ancient titans, Godzilla and Kong, clash in an epic battle as humans unravel their intertwined origins and connection to Skull Island's mysteries</p>
-                            <button class="movie-list-item-button">Out Now</button>
+                            <button class="movie-list-item-button">Coming Soon To Cinema</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="Images/poster3.jpg" alt="">
                             <span class="movie-list-item-title">BeetleJuice</span>
-                            <p class="movie-list-item-desc"></p>
-                            <button class="movie-list-item-button">Coming Soon</button>
+                            <p class="movie-list-item-desc">Beetlejuice is back! After an unexpected family tragedy, three generations of the Deetz family.</p>
+                            <button class="movie-list-item-button">Coming Soon To Cinema</button>
                         </div>
                         <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="Images/poster1.webp" alt="">
-                            <span class="movie-list-item-title">Joker</span>
-                            <p class="movie-list-item-desc"></p>
-                            <button class="movie-list-item-button">Out Now</button>
+                            <img class="movie-list-item-img" src="Images/poster.jpg" alt="">
+                            <span class="movie-list-item-title">Furiosa : A Mad Max Saga</span>
+                            <p class="movie-list-item-desc">As the world fell, young Furiosa is snatched from the Green Place of Many Mothers and falls into the hands of a great Biker Horde led by the Warlord Dementus./p>
+                            <button class="movie-list-item-button">Coming Soon To Cinema</button>
                         </div>
+
                     </div>
                     <i class="fas fa-chevron-right arrow"></i>
                 </div>
@@ -320,44 +333,44 @@
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="Images/movie3.webp" alt="">
                             <span class="movie-list-item-title">Tenet</span>
-                            <p class="movie-list-item-desc"></p>
-                            <button class="movie-list-item-button">Box Office</button>
+                            <p class="movie-list-item-desc">Armed with only the word "Tenet," and fighting for the survival of the entire world, CIA operative, The Protagonist, journeys through a twilight world of ...</p>
+                            <button class="movie-list-item-button">Watch Trailer</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="Images/movie2.webp" alt="">
                             <span class="movie-list-item-title">Shazam Fury of the Gods</span>
-                            <p class="movie-list-item-desc"></p>
-                            <button class="movie-list-item-button">Box Office</button>
+                            <p class="movie-list-item-desc">The film continues the story of teenage Billy Batson who, upon reciting the magic word “SHAZAM!” is transformed into his adult Super Hero alter ego, Shazam</p>
+                            <button class="movie-list-item-button">Watch Trailer</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="Images/movie1.jpg" alt="">
                             <span class="movie-list-item-title">Fantastic Beasts : Secrets of Dumbledore</span>
-                            <p class="movie-list-item-desc">.</p>
-                            <button class="movie-list-item-button">Box Office</button>
+                            <p class="movie-list-item-desc">Unable to stop him alone, he asks Newt Scamander to lead an intrepid team on a dangerous mission.Albus Dumbledore knows that Gellert Grindelwald is moving to ...</p>
+                            <button class="movie-list-item-button">Watch Trailer</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="Images/poster9.jpg" alt="">
                             <span class="movie-list-item-title">Magic Mike's Last Dance</span>
-                            <p class="movie-list-item-desc"></p>
-                            <button class="movie-list-item-button">Box Office</button>
+                            <p class="movie-list-item-desc">Mike heads to London with a wealthy socialite who lures him with an offer he can't refuse.Mike takes to the stage again, following a business deal that went ...</p>
+                            <button class="movie-list-item-button">Watch Trailer</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="Images/poster7.jpg" alt="">
                             <span class="movie-list-item-title">Blue Beetle</span>
                             <p class="movie-list-item-desc"></p>
-                            <button class="movie-list-item-button">Box Office</button>
+                            <button class="movie-list-item-button">Watch Trailer</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="Images/poster6.webp" alt="">
                             <span class="movie-list-item-title">Flash</span>
                             <p class="movie-list-item-desc"></p>
-                            <button class="movie-list-item-button">Box Office</button>
+                            <button class="movie-list-item-button">Watch Trailer</button>
                         </div>                        
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="Images/poster4.jpg" alt="">
                             <span class="movie-list-item-title">Aquaman And The Lost Kingdom</span>
-                            <p class="movie-list-item-desc"></p>
-                            <button class="movie-list-item-button">Box Office</button>
+                            <p class="movie-list-item-desc">Wielding the Black Trident's power, he becomes a formidable foe. To defend Atlantis, Aquaman forges an alliance with his imprisoned brother. They must protect ...</p>
+                            <button class="movie-list-item-button">Watch Trailer</button>
                         </div>
 
 
@@ -415,9 +428,9 @@
 </body>
 <footer>TM & © 2024 Warner Bros. Entertainment Inc. All rights reserved
     <ul>
-        <li><a href="#">Privacy Policy</a></li>
-        <li><a href="#">Terms of Use</a></li>
-        <li><a href="#">Contact Us</a></li>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="terms-of-use.html">Terms of Use</a></li>
+        <li><a href="contactus.html">Contact Us</a></li>
 
     </ul>
 </footer>
