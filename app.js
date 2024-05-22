@@ -20,16 +20,28 @@ arrows.forEach((arrow, i) => {
   console.log(Math.floor(window.innerWidth / 270));
 });
 
-//TOGGLE
 
-const ball = document.querySelector(".toggle-ball");
-const items = document.querySelectorAll(
-  ".container,.movie-list-title,.navbar-container,.sidebar,.left-menu-icon,.toggle"
-);
+const toggle = document.querySelector('.toggle');
+const toggleBall = document.querySelector('.toggle-ball');
+const body = document.body;
 
-ball.addEventListener("click", () => {
-  items.forEach((item) => {
-    item.classList.toggle("active");
-  });
-  ball.classList.toggle("active");
+toggle.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+    toggleBall.classList.toggle('move');
+});
+
+const form = document.querySelector('form');
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+
+    if (name && email && message) {
+        alert(`Thank you, ${name}! We have received your feedback.`);
+        form.reset();
+    } else {
+        alert('Please fill in all fields.');
+    }
 });
