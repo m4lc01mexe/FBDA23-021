@@ -1,431 +1,1082 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap"
-        rel="stylesheet">
-    <link    
-        href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WarnerBros | Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
-    
-    <title>WarnerBros | Home</title>
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    body {
+      background: #080808;
+      color: #f0ede8;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
 
-        .navbar {
-            width: 100%;
-            background-color: #333;
-            color: white;
-            padding: 10px;
-        }
+    /* ── NAV ── */
+    .wb-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 60px;
+      background: rgba(8,8,8,0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
 
-        .navbar-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: auto;
-        }
+    .wb-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.08em;
+      color: #fff;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .wb-logo span { color: #1a7fd4; }
 
-        .logo-container {
-            display: flex;
-            align-items: center;
-        }
+    .wb-nav-links {
+      display: flex;
+      gap: 1.8rem;
+      list-style: none;
+    }
+    .wb-nav-links li a {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(240,237,232,0.6);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .wb-nav-links li a:hover,
+    .wb-nav-links li a.active { color: #fff; }
 
-        .logo {
-            font-size: 24px;
-        }
+    .wb-nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .wb-search-btn {
+      background: none;
+      border: none;
+      color: rgba(240,237,232,0.6);
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+    }
+    .wb-search-btn:hover { color: #fff; }
+    .wb-signin-btn {
+      background: #1a7fd4;
+      color: #fff;
+      border: none;
+      padding: 0.4rem 1.1rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .wb-signin-btn:hover { background: #2590e8; }
 
-        .menu-container {
-            display: flex;
-        }
+    /* ── HERO ── */
+    .wb-hero {
+      position: relative;
+      height: 92vh;
+      min-height: 560px;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
 
-        .menu-list {
-            display: flex;
-            list-style: none;
-            padding: 0;
-        }
+    .wb-hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 70% at 70% 40%, rgba(26,127,212,0.12) 0%, transparent 60%),
+        linear-gradient(160deg, #0d1a2a 0%, #080808 50%, #0a0808 100%);
+      animation: heroPulse 8s ease-in-out infinite alternate;
+    }
 
-        .menu-list-item {
-            margin: 0 10px;
-        }
+    @keyframes heroPulse {
+      from { opacity: 1; }
+      to   { opacity: 0.85; }
+    }
 
-        .menu-list-item a {
-            color: white;
-            text-decoration: none;
-        }
+    .wb-hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(26,127,212,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26,127,212,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: linear-gradient(to bottom, transparent 0%, black 30%, black 70%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 30%, black 70%, transparent 100%);
+    }
 
-        .profile-container {
-            display: flex;
-            align-items: center;
-        }
+    .wb-hero-particles {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
 
-        .profile-picture {
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-        }
+    .particle {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: rgba(26,127,212,0.6);
+      border-radius: 50%;
+      animation: floatUp linear infinite;
+    }
 
-        .profile-text-container {
-            margin-left: 10px;
-            display: flex;
-            align-items: center;
-        }
+    @keyframes floatUp {
+      0%   { transform: translateY(100vh) translateX(0); opacity: 0; }
+      10%  { opacity: 1; }
+      90%  { opacity: 1; }
+      100% { transform: translateY(-10vh) translateX(30px); opacity: 0; }
+    }
 
-        .toggle {
-            margin-left: 20px;
-            display: flex;
-            align-items: center;
-        }
+    .wb-hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 4rem 5rem;
+      max-width: 700px;
+      animation: slideUp 0.9s cubic-bezier(0.22,1,0.36,1) both;
+    }
 
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 20px;
-        }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
 
-        .content-container {
-            display: flex;
-            flex-direction: column;
-        }
+    .wb-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(26,127,212,0.15);
+      border: 1px solid rgba(26,127,212,0.4);
+      color: #5aadff;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.8rem;
+      border-radius: 2px;
+      margin-bottom: 1.2rem;
+    }
 
-        .featured-content {
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 40px;
-            text-align: center;
-        }
+    .wb-hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: #1a7fd4;
+      border-radius: 50%;
+      animation: blink 1.5s ease-in-out infinite;
+    }
 
-        .movie-list-container {
-            margin-top: 40px;
-        }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.3; }
+    }
 
-        .movie-list-title {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
+    .wb-hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 8vw, 6.5rem);
+      line-height: 0.95;
+      letter-spacing: 0.02em;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
 
-        .movie-list-wrapper {
-            display: flex;
-            overflow-x: auto;
-        }
+    .wb-hero-title span {
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255,255,255,0.3);
+    }
 
-        .movie-list {
-            display: flex;
-        }
+    .wb-hero-desc {
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(240,237,232,0.65);
+      max-width: 440px;
+      margin-bottom: 2rem;
+    }
 
-        .movie-list-item {
-            margin: 0 10px;
-            flex: 0 0 auto;
-            width: 200px;
-        }
+    .wb-hero-actions {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
 
-        .movie-list-item-img {
-            width: 100%;
-            border-radius: 10px;
-        }
+    .wb-btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #1a7fd4;
+      color: #fff;
+      border: none;
+      padding: 0.75rem 1.8rem;
+      border-radius: 4px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
 
-        .movie-list-item-title {
-            font-size: 18px;
-            margin: 10px 0;
-        }
+    .wb-btn-primary::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
 
-        .movie-list-item-button {
-            background-color: #0066bf;
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+    .wb-btn-primary:hover::after { opacity: 1; }
+    .wb-btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(26,127,212,0.4);
+    }
 
-        footer {
-            background-color: #333;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
+    .wb-btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: none;
+      color: rgba(240,237,232,0.8);
+      border: 1px solid rgba(240,237,232,0.2);
+      padding: 0.75rem 1.6rem;
+      border-radius: 4px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+    .wb-btn-ghost:hover { border-color: rgba(240,237,232,0.5); color: #fff; }
 
-        footer ul {
-            list-style: none;
-            padding: 0;
-        }
+    .wb-hero-meta {
+      position: absolute;
+      right: 4rem;
+      bottom: 5rem;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      animation: slideUp 1s cubic-bezier(0.22,1,0.36,1) 0.2s both;
+    }
 
-        footer li {
-            display: inline;
-            margin: 0 10px;
-        }
+    .wb-meta-stat { text-align: right; }
+    .wb-meta-stat .num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.2rem;
+      color: #fff;
+      line-height: 1;
+    }
+    .wb-meta-stat .lbl {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(240,237,232,0.4);
+    }
 
-        footer a {
-            color: white;
-            text-decoration: none;
-        }
+    .wb-meta-divider {
+      width: 1px;
+      height: 60px;
+      background: linear-gradient(to bottom, transparent, rgba(26,127,212,0.4), transparent);
+      align-self: flex-end;
+    }
 
-        @media (max-width: 768px) {
-            .navbar-container {
-                flex-direction: column;
-                align-items: flex-start;
-            }
+    /* ── TICKER ── */
+    .wb-ticker {
+      background: #1a7fd4;
+      padding: 0.55rem 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
 
-            .menu-container {
-                flex-direction: column;
-                align-items: flex-start;
-                width: 100%;
-            }
+    .wb-ticker-inner {
+      display: inline-block;
+      animation: ticker 30s linear infinite;
+    }
 
-            .menu-list {
-                flex-direction: column;
-                width: 100%;
-            }
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
 
-            .menu-list-item {
-                margin: 10px 0;
-            }
+    .wb-ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-right: 3rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.9);
+    }
 
-            .profile-container {
-                margin-top: 10px;
-                justify-content: space-between;
-                width: 100%;
-            }
+    .wb-ticker-dot {
+      width: 4px; height: 4px;
+      background: rgba(255,255,255,0.5);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
 
-            .content-container {
-                padding: 10px;
-            }
+    /* ── SECTIONS ── */
+    .wb-section { padding: 4rem; }
 
-            .movie-list-wrapper {
-                flex-direction: column;
-            }
+    .wb-section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+    }
 
-            .movie-list {
-                flex-direction: column;
-            }
+    .wb-section-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #1a7fd4;
+      margin-bottom: 0.4rem;
+    }
 
-            .movie-list-item {
-                width: 100%;
-                margin-bottom: 20px;
-            }
-        }
-        </style>
+    .wb-section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.4rem;
+      letter-spacing: 0.04em;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .wb-view-all {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #1a7fd4;
+      text-decoration: none;
+      cursor: pointer;
+      transition: gap 0.2s;
+    }
+    .wb-view-all:hover { gap: 0.7rem; }
+
+    /* ── CARD RAIL ── */
+    .wb-rail {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1rem;
+    }
+
+    .wb-card {
+      position: relative;
+      border-radius: 6px;
+      overflow: hidden;
+      aspect-ratio: 2 / 3;
+      cursor: pointer;
+      transition: transform 0.35s cubic-bezier(0.22,1,0.36,1);
+    }
+
+    .wb-card:hover {
+      transform: scale(1.04) translateY(-4px);
+      z-index: 2;
+    }
+
+    .wb-card-bg {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.12);
+    }
+
+    .wb-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.3) 50%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .wb-card:hover .wb-card-overlay { opacity: 1; }
+
+    .wb-card-info {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 1rem 0.8rem;
+      transform: translateY(6px);
+      transition: transform 0.3s cubic-bezier(0.22,1,0.36,1);
+    }
+
+    .wb-card:hover .wb-card-info { transform: translateY(0); }
+
+    .wb-card-genre {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #1a7fd4;
+      margin-bottom: 0.2rem;
+    }
+
+    .wb-card-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.3;
+    }
+
+    .wb-card-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      background: #1a7fd4;
+      color: #fff;
+      border: none;
+      padding: 0.35rem 0.75rem;
+      border-radius: 3px;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity 0.25s 0.05s, transform 0.25s 0.05s, background 0.2s;
+    }
+
+    .wb-card:hover .wb-card-btn { opacity: 1; transform: translateY(0); }
+    .wb-card-btn:hover { background: #2590e8; }
+
+    /* Card gradient fills */
+    .gc-1 { background: linear-gradient(135deg, #0d1a2a 0%, #1a2a3a 50%, #0a1520 100%); }
+    .gc-2 { background: linear-gradient(135deg, #1a0d0d 0%, #2a1a1a 50%, #150a0a 100%); }
+    .gc-3 { background: linear-gradient(135deg, #0d1a10 0%, #1a2a1a 50%, #0a1510 100%); }
+    .gc-4 { background: linear-gradient(135deg, #1a1a0d 0%, #2a2a1a 50%, #15150a 100%); }
+    .gc-5 { background: linear-gradient(135deg, #1a0d1a 0%, #2a1a2a 50%, #15091a 100%); }
+
+    /* Coming Soon tag */
+    .wb-soon-tag {
+      position: absolute;
+      top: 0.6rem; right: 0.6rem;
+      background: rgba(26,127,212,0.9);
+      color: #fff;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.5rem;
+      border-radius: 2px;
+      z-index: 1;
+    }
+
+    /* ── BRANDS ROW ── */
+    .wb-brands {
+      padding: 2rem 4rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      overflow-x: auto;
+    }
+
+    .wb-brands-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(240,237,232,0.3);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .wb-brand-pill {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      color: rgba(240,237,232,0.35);
+      white-space: nowrap;
+      cursor: pointer;
+      transition: color 0.2s;
+      flex-shrink: 0;
+    }
+
+    .wb-brand-pill:hover { color: #fff; }
+    .wb-brand-pill.active { color: #1a7fd4; }
+
+    /* ── FEATURED STRIP ── */
+    .wb-featured-wrap { padding: 0 4rem 4rem; }
+
+    .wb-featured {
+      padding: 2.5rem;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #0d1a2a 0%, #111 60%, #0a0a0a 100%);
+      border: 1px solid rgba(26,127,212,0.15);
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .wb-featured::before {
+      content: '';
+      position: absolute;
+      top: -40px; left: -40px;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(26,127,212,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .wb-featured-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      padding-right: 2rem;
+      border-right: 1px solid rgba(255,255,255,0.06);
+      position: relative;
+      z-index: 1;
+    }
+
+    .wb-featured-item:last-child { border-right: none; padding-right: 0; }
+
+    .wb-featured-tag {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #1a7fd4;
+    }
+
+    .wb-featured-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      color: #fff;
+      letter-spacing: 0.04em;
+      line-height: 1.1;
+    }
+
+    .wb-featured-desc {
+      font-size: 0.78rem;
+      font-weight: 300;
+      line-height: 1.6;
+      color: rgba(240,237,232,0.5);
+      flex: 1;
+    }
+
+    .wb-featured-link {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #1a7fd4;
+      text-decoration: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: gap 0.2s;
+    }
+
+    .wb-featured-link:hover { gap: 0.6rem; }
+
+    /* ── FOOTER ── */
+    .wb-footer {
+      margin-top: 2rem;
+      padding: 3rem 4rem 2rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .wb-footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .wb-footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 0.08em;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .wb-footer-logo span { color: #1a7fd4; }
+
+    .wb-footer-tagline {
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: rgba(240,237,232,0.35);
+      max-width: 220px;
+      line-height: 1.6;
+    }
+
+    .wb-footer-cols {
+      display: flex;
+      gap: 4rem;
+      flex-wrap: wrap;
+    }
+
+    .wb-footer-col-title {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(240,237,232,0.4);
+      margin-bottom: 1rem;
+    }
+
+    .wb-footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .wb-footer-col ul li a {
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: rgba(240,237,232,0.55);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .wb-footer-col ul li a:hover { color: #fff; }
+
+    .wb-footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .wb-footer-copy {
+      font-size: 0.72rem;
+      font-weight: 300;
+      color: rgba(240,237,232,0.3);
+    }
+
+    .wb-footer-links {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .wb-footer-links a {
+      font-size: 0.72rem;
+      font-weight: 300;
+      color: rgba(240,237,232,0.3);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .wb-footer-links a:hover { color: rgba(240,237,232,0.7); }
+
+    /* ── SCROLL FADE ── */
+    .wb-fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22,1,0.36,1);
+    }
+
+    .wb-fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .wb-nav-links { display: none; }
+      .wb-hero-content { padding: 0 2rem 4rem; }
+      .wb-hero-meta { display: none; }
+      .wb-section { padding: 2.5rem 1.5rem; }
+      .wb-rail { grid-template-columns: repeat(2, 1fr); }
+      .wb-featured { grid-template-columns: 1fr; }
+      .wb-featured-item { border-right: none; padding-right: 0; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 1.5rem; }
+      .wb-featured-item:last-child { border-bottom: none; padding-bottom: 0; }
+      .wb-featured-wrap { padding: 0 1.5rem 2.5rem; }
+      .wb-brands { padding: 1.5rem; gap: 1.5rem; }
+      .wb-footer { padding: 2.5rem 1.5rem 1.5rem; }
+      .wb-footer-cols { gap: 2rem; }
+    }
+  </style>
 </head>
 <body>
-    <div class="navbar">
-        <div class="navbar-container">
-            <div class="logo-container">
-                <h1 class="logo">Warner<span style="color:rgb(0, 102, 191)">Bros</span></h1>
-            </div>
-            <div class="menu-container">
-                <ul class="menu-list">
-                    <li class="menu-list-item active">
-                        <a href="index.html">Home</a>
-                    </li>
-                    <li class="menu-list-item">
-                        <a href="movies.html">Movies</a>
-                    </li>
-                    <li class="menu-list-item">
-                        <a href="tvshows.html">TV Shows</a>
-                    </li>
-                    <li class="menu-list-item">
-                        <a href="gamesandapps.html">Games & Apps</a>
-                    </li>
-                    <li class="menu-list-item">
-                        <a href="brands.html">Collections</a>
-                    </li>
-                    <li class="nav-item menu-list-item">
-                        <a class="nav-link" href="newsandevents.html">News</a>
-                    </li>                    
-                    <li class="menu-list-item">
-                        <a href="onlinestore.html">Store</a>
-                    </li>
-                    <li class="menu-list-item">
-                        <a href="feedback.html">Feedback</a>
-                    </li>
-                    <li class="nav-item menu-list-item">
-                        <a class="nav-link" href="aboutus.html">About</a>
-                    </li>
 
-                </ul>
-                </ul>
-            </div>
-            <div class="profile-container">
-                <img class="profile-picture" src="Images/download.jpeg" alt="">
-                <div class="profile-text-container">
-                    <span class="profile-text">Profile</span>
-                    <i class="fas fa-caret-down"></i>
-                </div>
-                <div class="toggle">
-                    <i class="fas fa-moon toggle-icon"></i>
-                    <i class="fas fa-sun toggle-icon"></i>
-                    <div class="toggle-ball"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="content-container">
-            <div class="featured-content"
-                style="background: linear-gradient(to bottom, rgba(0,0,0,0), #151515), url('Images/background4.jpg">
-                <img class="featured-title" src="Images/title3.png" alt="">
-                <p class="featured-desc">As the world fell, young Furiosa is snatched from the Green Place of Many Mothers and falls into the hands of a great Biker Horde led by the Warlord Dementus.</p>
-                </a>
-
-            </div>
-            <div class="movie-list-container">
-                <h1 class="movie-list-title">Movie Favorites</h1>
-                <div class="movie-list-wrapper">
-                    <div class="movie-list">
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="Images/poster9.jpg" alt="">
-                            <span class="movie-list-item-title">Magic Mike's Last Dance</span>
-                            <p class="movie-list-item-desc"></p>
-                            <button class="movie-list-item-button">
-                                <a href="Movie Pages/magicmike.html">View</a></button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="Images/batman.jpg" alt="">
-                            <span class="movie-list-item-title">The Batman</span>
-                            <p class="movie-list-item-desc">When a sadistic serial killer begins murdering key political figures in Gotham, Batman is forced to investigate the city's hidden corruption and question ...</p>
-                            <button class="movie-list-item-button">
-                                <a href="Movie Pages/magicmike.html">View</a></button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="Images/2.webp" alt="">
-                            <span class="movie-list-item-title">The Matrix Resurrections</span>
-                            <p class="movie-list-item-desc">To find out if his reality is a physical or mental construct, Mr. Anderson, aka Neo, will have to choose to follow the white rabbit once more.</p>
-                            <button class="movie-list-item-button">
-                                <a href="Movie Pages/magicmike.html">View</a></button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="Images/poster8.jpg" alt="">
-                            <span class="movie-list-item-title">Barbie</span>
-                            <p class="movie-list-item-desc">To live in Barbie Land is to be a perfect being in a perfect place. Unless you have a full‐on existential crisis. Or you're a Ken</p>
-                            <button class="movie-list-item-button">
-                                <a href="Movie Pages/magicmike.html">View</a></button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="Images/poster17.jpg" alt="">
-                            <span class="movie-list-item-title">Suicide Squad</span>
-                            <p class="movie-list-item-desc">Today's do-or-die assignment? Assemble a collection of cons, including Bloodsport, Peacemaker, Captain Boomerang, Ratcatcher 2, Savant, King Shark, Blackguard, ...</p>
-                            <button class="movie-list-item-button">
-                                <a href="Movie Pages/magicmike.html">View</a></button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="Images/poster16.jpg" alt="">
-                            <span class="movie-list-item-title">Wonder Woman</span>
-                            <p class="movie-list-item-desc">When a pilot crashes and tells of conflict in the outside world, Diana, an Amazonian warrior in training, leaves home to fight a war, discovering her full ...</p>
-                            <button class="movie-list-item-button">
-                                <a href="Movie Pages/magicmike.html">View</a></button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/1.jpg" alt="">
-                            <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">
-                                <a href="Movie Pages/magicmike.html">View</a></button>
-                        </div>
-                    </div>
-                    <i class="fas fa-chevron-right arrow"></i>
-                </div>
-            </div>
-                <h1 class="movie-list-title">Coming Soon To Theatre...</h1>
-                <div class="movie-list-wrapper">
-                    <div class="movie-list">
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="Images/poster3.jpg" alt="">
-                            <span class="movie-list-item-title">BeetleJuice</span>
-                            <p class="movie-list-item-desc">Beetlejuice is back! After an unexpected family tragedy, three generations of the Deetz family.</p>
-                            <button class="movie-list-item-button">
-                                <a href="Movie Pages/magicmike.html">Coming Soon</button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="Images/poster1.webp" alt="">
-                            <span class="movie-list-item-title">Joker</span>
-                            <p class="movie-list-item-desc">Joker 2 is coming to cinemas in October and we finally have the first trailer to savour for the highly-anticipated sequel.</p>
-                            <button class="movie-list-item-button">
-                                <a href="Movie Pages/magicmike.html">Coming Soon</button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="Images/poster.jpg" alt="">
-                            <span class="movie-list-item-title">Furiosa : A Mad Max</span>
-                            <p class="movie-list-item-desc">As the world fell, young Furiosa is snatched from the Green Place of Many Mothers and falls into the hands of a great Biker Horde led by the Warlord Dementus.</p>
-                            <button class="movie-list-item-button">
-                                <a href="Movie Pages/furiosaplay.html">Coming Soon</button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="Images/poster15.jpg" alt="">
-                            <span class="movie-list-item-title">Horizon : An American Saga Part One</span>
-                            <p class="movie-list-item-desc">Families, friends and foes discover the lure of the Old West as the Civil War divides the country</p>
-                            <button class="movie-list-item-button">
-                                <a href="Movie Pages/magicmike.html">Coming Soon</button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="Images/poster18.jpg" alt="">
-                            <span class="movie-list-item-title">Godzilla X Kong : The New Empire</span>
-                            <p class="movie-list-item-desc">Two ancient titans, Godzilla and Kong, clash in an epic battle as humans unravel their intertwined origins and connection to Skull Island's mysteries.</p>
-                            <button class="movie-list-item-button">
-                                <a href="Movie Pages/magicmike.html">View</button>
-                        </div>                        
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="Images/poster19.jpg" alt="">
-                            <span class="movie-list-item-title">Horizon : An American Saga Part Two</span>
-                            <p class="movie-list-item-desc">The continuation of one story of the settlement of the American west. It follows the further adventures of characters first featured in Horizon: An American ...</p>
-                            <button class="movie-list-item-button">
-                                <a href="Movie Pages/magicmike.html">Coming Soon</button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/1.jpg" alt="">
-                            <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">Watch</button>
-                        </div>
-                    </div>
-                    <i class="fas fa-chevron-right arrow"></i>
-                </div>
-            </div>
-        </div>
-    </div>
-
-<footer>TM & © 2024 Warner Bros. Entertainment Inc. All rights reserved
-    <div class="menu-container">
-        <p>Questions? Call 1-800-888-3999</p>
-    <ul>
-            <ul>
-                <li><a href="faq.html">FAQ</a></li>
-                <li><a href="helpcenter.html">Help Center</a></li>
-                <li><a href="account.html">Account</a></li>
-                <li><a href="media.html">Media Center</a></li>
-                <li><a href="ways.html">Ways to Watch</a></li>
-                <li><a href="terms-of-use.html">Terms of Use</a></li>
-                <li><a href="privacy-policy.html">Privacy</a></li>
-                <li><a href="cookies.html">Cookie Preferences</a></li>
-                <li><a href="corporate.html">Corporate Information</a></li>
-                <li><a href="contactus.html">Contact Us</a></li>
-            </ul>
-        </div>
+  <!-- NAV -->
+  <nav class="wb-nav">
+    <a class="wb-logo" href="index.html">Warner<span>Bros</span></a>
+    <ul class="wb-nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="movies.html">Movies</a></li>
+      <li><a href="tvshows.html">TV Shows</a></li>
+      <li><a href="hboshows.html">HBO</a></li>
+      <li><a href="dc.html">DC</a></li>
+      <li><a href="gamesandapps.html">Games</a></li>
+      <li><a href="onlinestore.html">Store</a></li>
+      <li><a href="newsandevents.html">News</a></li>
     </ul>
-</footer>
-    <script src="app.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="js/scripts.js"></script>
+    <div class="wb-nav-actions">
+      <button class="wb-search-btn" aria-label="Search">
+        <i class="ti ti-search"></i>
+      </button>
+      <button class="wb-signin-btn">Sign In</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="wb-hero">
+    <div class="wb-hero-bg"></div>
+    <div class="wb-hero-grid"></div>
+    <div class="wb-hero-particles" id="particles"></div>
+
+    <div class="wb-hero-content">
+      <div class="wb-hero-badge">Now Showing</div>
+      <h1 class="wb-hero-title">
+        Furiosa<br>
+        <span>A Mad Max</span><br>
+        Saga
+      </h1>
+      <p class="wb-hero-desc">
+        Young Furiosa is snatched from the Green Place of Many Mothers and falls into the hands of a great Biker Horde. Her journey across the wasteland begins.
+      </p>
+      <div class="wb-hero-actions">
+        <button class="wb-btn-primary">
+          <i class="ti ti-player-play"></i> Watch Now
+        </button>
+        <button class="wb-btn-ghost">
+          <i class="ti ti-info-circle"></i> More Info
+        </button>
+      </div>
+    </div>
+
+    <div class="wb-hero-meta">
+      <div class="wb-meta-stat">
+        <div class="num">100+</div>
+        <div class="lbl">Years of Stories</div>
+      </div>
+      <div class="wb-meta-divider"></div>
+      <div class="wb-meta-stat">
+        <div class="num">285+</div>
+        <div class="lbl">Titles Available</div>
+      </div>
+      <div class="wb-meta-divider"></div>
+      <div class="wb-meta-stat">
+        <div class="num">DC</div>
+        <div class="lbl">Universe Included</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="wb-ticker" aria-hidden="true">
+    <div class="wb-ticker-inner">
+      <span class="wb-ticker-item"><span class="wb-ticker-dot"></span>Beetlejuice Beetlejuice — Now in Theatres</span>
+      <span class="wb-ticker-item"><span class="wb-ticker-dot"></span>Joker: Folie à Deux — Coming Soon</span>
+      <span class="wb-ticker-item"><span class="wb-ticker-dot"></span>Godzilla x Kong: The New Empire — Available Now</span>
+      <span class="wb-ticker-item"><span class="wb-ticker-dot"></span>Horizon: An American Saga — Coming 2025</span>
+      <span class="wb-ticker-item"><span class="wb-ticker-dot"></span>The Batman Part II — In Development</span>
+      <span class="wb-ticker-item"><span class="wb-ticker-dot"></span>Beetlejuice Beetlejuice — Now in Theatres</span>
+      <span class="wb-ticker-item"><span class="wb-ticker-dot"></span>Joker: Folie à Deux — Coming Soon</span>
+      <span class="wb-ticker-item"><span class="wb-ticker-dot"></span>Godzilla x Kong: The New Empire — Available Now</span>
+      <span class="wb-ticker-item"><span class="wb-ticker-dot"></span>Horizon: An American Saga — Coming 2025</span>
+      <span class="wb-ticker-item"><span class="wb-ticker-dot"></span>The Batman Part II — In Development</span>
+    </div>
+  </div>
+
+  <!-- MOVIE FAVORITES RAIL -->
+  <section class="wb-section wb-fade-in">
+    <div class="wb-section-header">
+      <div>
+        <div class="wb-section-label">Fan Favorites</div>
+        <div class="wb-section-title">Movie Collection</div>
+      </div>
+      <a class="wb-view-all" href="movies.html">View All <i class="ti ti-arrow-right"></i></a>
+    </div>
+    <div class="wb-rail">
+      <div class="wb-card gc-1">
+        <div class="wb-card-bg">THE BATMAN</div>
+        <div class="wb-card-overlay"></div>
+        <div class="wb-card-info">
+          <div class="wb-card-genre">Action / DC</div>
+          <div class="wb-card-title">The Batman</div>
+          <button class="wb-card-btn" onclick="location.href='Movie Pages/batman.html'">
+            <i class="ti ti-player-play"></i> View
+          </button>
+        </div>
+      </div>
+      <div class="wb-card gc-2">
+        <div class="wb-card-bg">FURIOSA</div>
+        <div class="wb-card-overlay"></div>
+        <div class="wb-card-info">
+          <div class="wb-card-genre">Action / Thriller</div>
+          <div class="wb-card-title">Furiosa: A Mad Max Saga</div>
+          <button class="wb-card-btn" onclick="location.href='Movie Pages/furiosaplay.html'">
+            <i class="ti ti-player-play"></i> View
+          </button>
+        </div>
+      </div>
+      <div class="wb-card gc-3">
+        <div class="wb-card-bg">BARBIE</div>
+        <div class="wb-card-overlay"></div>
+        <div class="wb-card-info">
+          <div class="wb-card-genre">Comedy / Fantasy</div>
+          <div class="wb-card-title">Barbie</div>
+          <button class="wb-card-btn" onclick="location.href='Movie Pages/magicmike.html'">
+            <i class="ti ti-player-play"></i> View
+          </button>
+        </div>
+      </div>
+      <div class="wb-card gc-5">
+        <div class="wb-card-bg">MATRIX</div>
+        <div class="wb-card-overlay"></div>
+        <div class="wb-card-info">
+          <div class="wb-card-genre">Sci-Fi</div>
+          <div class="wb-card-title">The Matrix Resurrections</div>
+          <button class="wb-card-btn" onclick="location.href='Movie Pages/magicmike.html'">
+            <i class="ti ti-player-play"></i> View
+          </button>
+        </div>
+      </div>
+      <div class="wb-card gc-4">
+        <div class="wb-card-bg">WONDER WOMAN</div>
+        <div class="wb-card-overlay"></div>
+        <div class="wb-card-info">
+          <div class="wb-card-genre">Action / DC</div>
+          <div class="wb-card-title">Wonder Woman</div>
+          <button class="wb-card-btn" onclick="location.href='Movie Pages/magicmike.html'">
+            <i class="ti ti-player-play"></i> View
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMING SOON RAIL -->
+  <section class="wb-section wb-fade-in" style="padding-top: 0;">
+    <div class="wb-section-header">
+      <div>
+        <div class="wb-section-label">On the Horizon</div>
+        <div class="wb-section-title">Coming Soon</div>
+      </div>
+      <a class="wb-view-all" href="movies.html">See Schedule <i class="ti ti-arrow-right"></i></a>
+    </div>
+    <div class="wb-rail">
+      <div class="wb-card gc-1">
+        <div class="wb-card-bg">BEETLEJUICE</div>
+        <div class="wb-soon-tag">In Theatres</div>
+        <div class="wb-card-overlay"></div>
+        <div class="wb-card-info">
+          <div class="wb-card-genre">Comedy / Horror</div>
+          <div class="wb-card-title">Beetlejuice Beetlejuice</div>
+          <button class="wb-card-btn">
+            <i class="ti ti-ticket"></i> Get Tickets
+          </button>
+        </div>
+      </div>
+      <div class="wb-card gc-2">
+        <div class="wb-card-bg">JOKER 2</div>
+        <div class="wb-soon-tag">Oct 2024</div>
+        <div class="wb-card-overlay"></div>
+        <div class="wb-card-info">
+          <div class="wb-card-genre">Drama / DC</div>
+          <div class="wb-card-title">Joker: Folie à Deux</div>
+          <button class="wb-card-btn">
+            <i class="ti ti-bell"></i> Remind Me
+          </button>
+        </div>
+      </div>
+      <div class="wb-card gc-4">
+        <div class="wb-card-bg">HORIZON</div>
+        <div class="wb-soon-tag">Coming 2025</div>
+        <div class="wb-card-overlay"></div>
+        <div class="wb-card-info">
+          <div class="wb-card-genre">Western / Drama</div>
+          <div class="wb-card-title">Horizon: Part One</div>
+          <button class="wb-card-btn">
+            <i class="ti ti-bell"></i> Remind Me
+          </button>
+        </div>
+      </div>
+      <div class="wb-card gc-3">
+        <div class="wb-card-bg">GODZILLA × KONG</div>
+        <div class="wb-card-overlay"></div>
+        <div class="wb-card-info">
+          <div class="wb-card-genre">Action / Sci-Fi</div>
+          <div class="wb-card-title">Godzilla x Kong</div>
+          <button class="wb-card-btn" onclick="location.href='Movie Pages/magicmike.html'">
+            <i class="ti ti-player-play"></i> View
+          </button>
+        </div>
+      </div>
+      <div class="wb-card gc-5">
+        <div class="wb-card-bg">HORIZON 2</div>
+        <div class="wb-soon-tag">TBA</div>
+        <div class="wb-card-overlay"></div>
+        <div class="wb-card-info">
+          <div class="wb-card-genre">Western / Drama</div>
+          <div class="wb-card-title">Horizon: Part Two</div>
+          <button class="wb-card-btn">
+            <i class="ti ti-bell"></i> Remind Me
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRANDS ROW -->
+  <div class="wb-brands wb-fade-in">
+    <div class="wb-brands-label">Our Collections</div>
+    <a class="wb-brand-pill active" href="dc.html">DC Universe</a>
+    <a class="wb-brand-pill" href="hboshows.html">HBO Originals</a>
+    <a class="wb-brand-pill" href="brands.html">WB Classics</a>
+    <a class="wb-brand-pill" href="famfavs.html">Looney Tunes</a>
+    <a class="wb-brand-pill" href="brands.html">Harry Potter</a>
+    <a class="wb-brand-pill" href="brands.html">Wizarding World</a>
+    <a class="wb-brand-pill" href="loveandromance.html">Love and Romance</a>
+    <a class="wb-brand-pill" href="experiences.html">Experiences</a>
+  </div>
+
+  <!-- FEATURED STRIP -->
+  <div class="wb-featured-wrap wb-fade-in">
+    <div class="wb-featured">
+      <div class="wb-featured-item">
+        <div class="wb-featured-tag">Now Streaming</div>
+        <div class="wb-featured-name">HBO Originals</div>
+        <div class="wb-featured-desc">From The Last of Us to House of the Dragon — prestige television that defines a generation. Stream on Max.</div>
+        <a class="wb-featured-link" href="hboshows.html">Explore HBO <i class="ti ti-arrow-right"></i></a>
+      </div>
+      <div class="wb-featured-item">
+        <div class="wb-featured-tag">DC Universe</div>
+        <div class="wb-featured-name">Heroes and Villains</div>
+        <div class="wb-featured-desc">Batman, Superman, Wonder Woman, Aquaman. The full DC Universe lives here — films, series, and animated collections.</div>
+        <a class="wb-featured-link" href="dc.html">Enter DC <i class="ti ti-arrow-right"></i></a>
+      </div>
+      <div class="wb-featured-item">
+        <div class="wb-featured-tag">Games</div>
+        <div class="wb-featured-name">Games and Apps</div>
+        <div class="wb-featured-desc">Hogwarts Legacy, MultiVersus, Mortal Kombat and more. Explore the full Warner Bros. Interactive library.</div>
+        <a class="wb-featured-link" href="gamesandapps.html">Browse Games <i class="ti ti-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="wb-footer wb-fade-in">
+    <div class="wb-footer-top">
+      <div>
+        <div class="wb-footer-logo">Warner<span>Bros</span></div>
+        <div class="wb-footer-tagline">A century of storytelling. Infinite worlds to explore.</div>
+      </div>
+      <div class="wb-footer-cols">
+        <div class="wb-footer-col">
+          <div class="wb-footer-col-title">Discover</div>
+          <ul>
+            <li><a href="movies.html">Movies</a></li>
+            <li><a href="tvshows.html">TV Shows</a></li>
+            <li><a href="hboshows.html">HBO</a></li>
+            <li><a href="dc.html">DC</a></li>
+            <li><a href="gamesandapps.html">Games and Apps</a></li>
+          </ul>
+        </div>
+        <div class="wb-footer-col">
+          <div class="wb-footer-col-title">Company</div>
+          <ul>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="newsandevents.html">News and Events</a></li>
+            <li><a href="brands.html">Brands</a></li>
+            <li><a href="contactus.html">Contact Us</a></li>
+            <li><a href="onlinestore.html">Online Store</a></li>
+          </ul>
+        </div>
+        <div class="wb-footer-col">
+          <div class="wb-footer-col-title">Support</div>
+          <ul>
+            <li><a href="feedback.html">Feedback</a></li>
+            <li><a href="terms-of-use.html">Terms of Use</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="contactus.html">Help Center</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="wb-footer-bottom">
+      <div class="wb-footer-copy">TM and © 2024 Warner Bros. Entertainment Inc. All rights reserved.</div>
+      <div class="wb-footer-links">
+        <a href="terms-of-use.html">Terms</a>
+        <a href="privacy-policy.html">Privacy</a>
+        <a href="contactus.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Floating particles
+    const container = document.getElementById('particles');
+    for (let i = 0; i < 20; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      p.style.left = Math.random() * 100 + '%';
+      p.style.animationDuration = (6 + Math.random() * 10) + 's';
+      p.style.animationDelay = (Math.random() * 12) + 's';
+      p.style.width = p.style.height = (1 + Math.random() * 2.5) + 'px';
+      p.style.opacity = 0.3 + Math.random() * 0.5;
+      container.appendChild(p);
+    }
+
+    // Scroll-triggered fade-in
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visible');
+      });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll('.wb-fade-in').forEach(el => observer.observe(el));
+
+    // Brand pill active toggle
+    document.querySelectorAll('.wb-brand-pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        document.querySelectorAll('.wb-brand-pill').forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+      });
+    });
+  </script>
+
 </body>
 </html>
