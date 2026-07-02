@@ -1,437 +1,893 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WarnerBros | Movies</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+    body {
+      background: #080808;
+      color: #f0ede8;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
 
-    <title>WarnerBros | Movies</title>
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    /* ── NAV ── */
+    .wb-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 60px;
+      background: rgba(8,8,8,0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .wb-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.08em;
+      color: #fff;
+      text-decoration: none;
+    }
+    .wb-logo span { color: #1a7fd4; }
+    .wb-nav-links { display: flex; gap: 1.8rem; list-style: none; }
+    .wb-nav-links li a {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(240,237,232,0.6);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .wb-nav-links li a:hover,
+    .wb-nav-links li a.active { color: #fff; }
+    .wb-nav-actions { display: flex; align-items: center; gap: 1rem; }
+    .wb-search-btn {
+      background: none; border: none;
+      color: rgba(240,237,232,0.6);
+      cursor: pointer; font-size: 1.1rem;
+      display: flex; align-items: center;
+      transition: color 0.2s;
+    }
+    .wb-search-btn:hover { color: #fff; }
+    .wb-signin-btn {
+      background: #1a7fd4; color: #fff; border: none;
+      padding: 0.4rem 1.1rem; border-radius: 4px;
+      font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .wb-signin-btn:hover { background: #2590e8; }
 
-        .navbar {
-            width: 100%;
-            background-color: #333;
-            color: white;
-            padding: 10px;
-        }
+    /* ── PAGE HERO ── */
+    .page-hero {
+      position: relative;
+      height: 44vh;
+      min-height: 320px;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+    .page-hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 80% at 30% 50%, rgba(26,127,212,0.10) 0%, transparent 65%),
+        linear-gradient(160deg, #0a1520 0%, #080808 60%);
+      animation: heroPulse 8s ease-in-out infinite alternate;
+    }
+    @keyframes heroPulse {
+      from { opacity: 1; }
+      to   { opacity: 0.82; }
+    }
+    .page-hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(26,127,212,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26,127,212,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: linear-gradient(to bottom, transparent 0%, black 40%, black 70%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 40%, black 70%, transparent 100%);
+    }
+    .page-hero-content {
+      position: relative; z-index: 2;
+      padding: 0 4rem 3rem;
+      animation: slideUp 0.8s cubic-bezier(0.22,1,0.36,1) both;
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .page-hero-label {
+      font-size: 0.68rem; font-weight: 600;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: #1a7fd4; margin-bottom: 0.5rem;
+    }
+    .page-hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      line-height: 0.95; letter-spacing: 0.02em;
+      color: #fff;
+    }
+    .page-hero-title span {
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255,255,255,0.25);
+    }
+    .page-hero-sub {
+      margin-top: 0.8rem;
+      font-size: 0.9rem; font-weight: 300;
+      color: rgba(240,237,232,0.55);
+      max-width: 500px; line-height: 1.6;
+    }
 
-        .navbar-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: auto;
-        }
+    /* ── FILTER BAR ── */
+    .filter-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 1.4rem 4rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      overflow-x: auto;
+      flex-wrap: wrap;
+    }
+    .filter-label {
+      font-size: 0.65rem; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(240,237,232,0.3);
+      white-space: nowrap; flex-shrink: 0;
+      margin-right: 0.4rem;
+    }
+    .filter-chip {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(240,237,232,0.6);
+      padding: 0.35rem 0.9rem;
+      border-radius: 20px;
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .filter-chip:hover {
+      border-color: rgba(26,127,212,0.5);
+      color: #fff;
+    }
+    .filter-chip.active {
+      background: #1a7fd4;
+      border-color: #1a7fd4;
+      color: #fff;
+    }
 
-        .logo-container {
-            display: flex;
-            align-items: center;
-        }
+    /* ── SPOTLIGHT ── */
+    .spotlight {
+      margin: 3rem 4rem 0;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      min-height: 340px;
+      display: flex;
+      align-items: flex-end;
+      background: linear-gradient(135deg, #0d1a2a 0%, #111 60%, #0a0a0a 100%);
+      border: 1px solid rgba(26,127,212,0.12);
+    }
+    .spotlight-glow {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 55% 70% at 75% 40%, rgba(26,127,212,0.14) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .spotlight-art {
+      position: absolute;
+      right: 0; top: 0; bottom: 0;
+      width: 48%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 5rem; letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.04);
+      background: linear-gradient(to left, rgba(8,8,8,0) 0%, transparent 100%);
+    }
+    .spotlight-content {
+      position: relative; z-index: 2;
+      padding: 3rem;
+      max-width: 55%;
+    }
+    .spotlight-tag {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: rgba(26,127,212,0.15);
+      border: 1px solid rgba(26,127,212,0.35);
+      color: #5aadff;
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 0.28rem 0.75rem; border-radius: 2px;
+      margin-bottom: 1rem;
+    }
+    .spotlight-tag::before {
+      content: '';
+      width: 5px; height: 5px;
+      background: #1a7fd4; border-radius: 50%;
+      animation: blink 1.5s ease-in-out infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.25; }
+    }
+    .spotlight-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      line-height: 1; letter-spacing: 0.03em;
+      color: #fff; margin-bottom: 0.8rem;
+    }
+    .spotlight-meta {
+      display: flex; align-items: center; gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .spotlight-rating {
+      display: flex; align-items: center; gap: 0.3rem;
+      font-size: 0.78rem; font-weight: 600; color: #f5c518;
+    }
+    .spotlight-year, .spotlight-runtime, .spotlight-genre {
+      font-size: 0.72rem; color: rgba(240,237,232,0.45);
+    }
+    .spotlight-dot { color: rgba(240,237,232,0.2); }
+    .spotlight-desc {
+      font-size: 0.85rem; font-weight: 300;
+      line-height: 1.7; color: rgba(240,237,232,0.6);
+      margin-bottom: 1.8rem;
+    }
+    .spotlight-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+    .wb-btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: #1a7fd4; color: #fff; border: none;
+      padding: 0.7rem 1.6rem; border-radius: 4px;
+      font-size: 0.8rem; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      cursor: pointer; transition: all 0.25s;
+      position: relative; overflow: hidden;
+    }
+    .wb-btn-primary::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 50%);
+      opacity: 0; transition: opacity 0.25s;
+    }
+    .wb-btn-primary:hover::after { opacity: 1; }
+    .wb-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(26,127,212,0.35); }
+    .wb-btn-ghost {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: none; color: rgba(240,237,232,0.75);
+      border: 1px solid rgba(240,237,232,0.18);
+      padding: 0.7rem 1.4rem; border-radius: 4px;
+      font-size: 0.8rem; font-weight: 500;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      cursor: pointer; transition: all 0.25s;
+    }
+    .wb-btn-ghost:hover { border-color: rgba(240,237,232,0.45); color: #fff; }
 
-        .logo {
-            font-size: 24px;
-        }
+    /* ── SECTION ── */
+    .wb-section { padding: 3rem 4rem; }
+    .wb-section-header {
+      display: flex; align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 1.8rem;
+    }
+    .wb-section-label {
+      font-size: 0.68rem; font-weight: 600;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: #1a7fd4; margin-bottom: 0.35rem;
+    }
+    .wb-section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.2rem; letter-spacing: 0.04em;
+      color: #fff; line-height: 1;
+    }
+    .wb-view-all {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: #1a7fd4; text-decoration: none;
+      cursor: pointer; transition: gap 0.2s;
+    }
+    .wb-view-all:hover { gap: 0.7rem; }
 
-        .menu-container {
-            display: flex;
-        }
+    /* ── MOVIE GRID ── */
+    .movie-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.2rem;
+    }
+    .movie-card {
+      position: relative; border-radius: 6px;
+      overflow: hidden; aspect-ratio: 2 / 3;
+      cursor: pointer;
+      transition: transform 0.35s cubic-bezier(0.22,1,0.36,1);
+      background: #111;
+    }
+    .movie-card:hover { transform: scale(1.04) translateY(-5px); z-index: 2; }
+    .movie-card-bg {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem; letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.1);
+      padding: 1rem; text-align: center;
+    }
+    .movie-card-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.4) 45%, transparent 100%);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .movie-card:hover .movie-card-overlay { opacity: 1; }
+    .movie-card-info {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 1rem 0.85rem;
+      transform: translateY(6px);
+      transition: transform 0.3s cubic-bezier(0.22,1,0.36,1);
+    }
+    .movie-card:hover .movie-card-info { transform: translateY(0); }
+    .movie-card-genre {
+      font-size: 0.6rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: #1a7fd4; margin-bottom: 0.2rem;
+    }
+    .movie-card-title {
+      font-size: 0.85rem; font-weight: 600;
+      color: #fff; line-height: 1.3;
+    }
+    .movie-card-year {
+      font-size: 0.68rem; color: rgba(240,237,232,0.4);
+      margin-top: 0.15rem;
+    }
+    .movie-card-btn {
+      display: inline-flex; align-items: center; gap: 0.3rem;
+      background: #1a7fd4; color: #fff; border: none;
+      padding: 0.32rem 0.7rem; border-radius: 3px;
+      font-size: 0.65rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      cursor: pointer; margin-top: 0.5rem;
+      opacity: 0; transform: translateY(4px);
+      transition: opacity 0.25s 0.05s, transform 0.25s 0.05s, background 0.2s;
+    }
+    .movie-card:hover .movie-card-btn { opacity: 1; transform: translateY(0); }
+    .movie-card-btn:hover { background: #2590e8; }
 
-        .menu-list {
-            display: flex;
-            list-style: none;
-            padding: 0;
-        }
+    /* ── BADGE ── */
+    .card-badge {
+      position: absolute; top: 0.6rem; left: 0.6rem;
+      font-size: 0.58rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.2rem 0.5rem; border-radius: 2px;
+      z-index: 1;
+    }
+    .badge-new { background: #1a7fd4; color: #fff; }
+    .badge-soon { background: rgba(245,197,24,0.9); color: #000; }
+    .badge-classic { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.2); }
 
-        .menu-list-item {
-            margin: 0 10px;
-        }
+    /* card colour fills */
+    .gc-1 { background: linear-gradient(135deg, #0d1a2a 0%, #1a2a3a 50%, #0a1520 100%); }
+    .gc-2 { background: linear-gradient(135deg, #1a0d0d 0%, #2a1a1a 50%, #150a0a 100%); }
+    .gc-3 { background: linear-gradient(135deg, #0d1a10 0%, #1a2a1a 50%, #0a1510 100%); }
+    .gc-4 { background: linear-gradient(135deg, #1a1a0d 0%, #2a2a1a 50%, #15150a 100%); }
+    .gc-5 { background: linear-gradient(135deg, #1a0d1a 0%, #2a1a2a 50%, #15091a 100%); }
+    .gc-6 { background: linear-gradient(135deg, #0d1515 0%, #1a2a2a 50%, #0a1515 100%); }
+    .gc-7 { background: linear-gradient(135deg, #1a150d 0%, #2a201a 50%, #15100a 100%); }
+    .gc-8 { background: linear-gradient(135deg, #150d1a 0%, #20152a 50%, #100a15 100%); }
+    .gc-9 { background: linear-gradient(135deg, #0d1510 0%, #1a2015 50%, #0a150a 100%); }
+    .gc-10 { background: linear-gradient(135deg, #151515 0%, #202020 50%, #0f0f0f 100%); }
 
-        .menu-list-item a {
-            color: white;
-            text-decoration: none;
-        }
+    /* ── TIMELINE STRIP ── */
+    .timeline-strip {
+      margin: 0 4rem 3rem;
+      padding: 2rem 2.5rem;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #0d1a2a 0%, #0f0f0f 70%);
+      border: 1px solid rgba(26,127,212,0.12);
+    }
+    .timeline-label {
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(240,237,232,0.35); margin-bottom: 1.2rem;
+    }
+    .timeline-items {
+      display: flex; gap: 0; overflow-x: auto;
+      padding-bottom: 0.5rem;
+    }
+    .timeline-item {
+      display: flex; flex-direction: column;
+      align-items: center; min-width: 140px;
+      position: relative; cursor: pointer;
+    }
+    .timeline-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 10px; left: calc(50% + 10px);
+      width: calc(100% - 20px); height: 1px;
+      background: linear-gradient(to right, rgba(26,127,212,0.5), rgba(26,127,212,0.1));
+    }
+    .timeline-dot {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: #080808;
+      border: 2px solid rgba(26,127,212,0.4);
+      margin-bottom: 0.7rem;
+      transition: all 0.25s;
+      position: relative; z-index: 1;
+    }
+    .timeline-item:hover .timeline-dot,
+    .timeline-item.active .timeline-dot {
+      background: #1a7fd4;
+      border-color: #1a7fd4;
+      box-shadow: 0 0 12px rgba(26,127,212,0.5);
+    }
+    .timeline-date {
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: #1a7fd4; margin-bottom: 0.25rem;
+    }
+    .timeline-name {
+      font-size: 0.72rem; font-weight: 500;
+      color: rgba(240,237,232,0.55);
+      text-align: center; line-height: 1.4;
+    }
+    .timeline-item:hover .timeline-name { color: #fff; }
 
-        .profile-container {
-            display: flex;
-            align-items: center;
-        }
+    /* ── SCROLL FADE ── */
+    .wb-fade-in {
+      opacity: 0; transform: translateY(22px);
+      transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22,1,0.36,1);
+    }
+    .wb-fade-in.visible { opacity: 1; transform: translateY(0); }
 
-        .profile-picture {
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-        }
+    /* ── FOOTER ── */
+    .wb-footer {
+      margin-top: 2rem; padding: 3rem 4rem 2rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .wb-footer-top {
+      display: flex; justify-content: space-between;
+      align-items: flex-start; margin-bottom: 2.5rem;
+      flex-wrap: wrap; gap: 2rem;
+    }
+    .wb-footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem; letter-spacing: 0.08em;
+      color: #fff; margin-bottom: 0.5rem;
+    }
+    .wb-footer-logo span { color: #1a7fd4; }
+    .wb-footer-tagline {
+      font-size: 0.78rem; font-weight: 300;
+      color: rgba(240,237,232,0.35);
+      max-width: 220px; line-height: 1.6;
+    }
+    .wb-footer-cols { display: flex; gap: 4rem; flex-wrap: wrap; }
+    .wb-footer-col-title {
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(240,237,232,0.4); margin-bottom: 1rem;
+    }
+    .wb-footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+    .wb-footer-col ul li a {
+      font-size: 0.8rem; font-weight: 300;
+      color: rgba(240,237,232,0.55); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .wb-footer-col ul li a:hover { color: #fff; }
+    .wb-footer-bottom {
+      display: flex; justify-content: space-between;
+      align-items: center; padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .wb-footer-copy { font-size: 0.72rem; font-weight: 300; color: rgba(240,237,232,0.3); }
+    .wb-footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .wb-footer-links a {
+      font-size: 0.72rem; font-weight: 300;
+      color: rgba(240,237,232,0.3); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .wb-footer-links a:hover { color: rgba(240,237,232,0.7); }
 
-        .profile-text-container {
-            margin-left: 10px;
-            display: flex;
-            align-items: center;
-        }
-
-        .toggle {
-            margin-left: 20px;
-            display: flex;
-            align-items: center;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 20px;
-        }
-
-        .content-container {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .featured-content {
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 40px;
-            text-align: center;
-        }
-
-        .movie-list-container {
-            margin-top: 40px;
-        }
-
-        .movie-list-title {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        .movie-list-wrapper {
-            display: flex;
-            overflow-x: auto;
-        }
-
-        .movie-list {
-            display: flex;
-        }
-
-        .movie-list-item {
-            margin: 0 10px;
-            flex: 0 0 auto;
-            width: 200px;
-        }
-
-        .movie-list-item-img {
-            width: 100%;
-            border-radius: 10px;
-        }
-
-        .movie-list-item-title {
-            font-size: 18px;
-            margin: 10px 0;
-        }
-
-        .movie-list-item-button {
-            background-color: #0066bf;
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        footer {
-            background-color: #333;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-
-        footer ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        footer li {
-            display: inline;
-            margin: 0 10px;
-        }
-
-        footer a {
-            color: white;
-            text-decoration: none;
-        }
-
-        @media (max-width: 768px) {
-            .navbar-container {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .menu-container {
-                flex-direction: column;
-                align-items: flex-start;
-                width: 100%;
-            }
-
-            .menu-list {
-                flex-direction: column;
-                width: 100%;
-            }
-
-            .menu-list-item {
-                margin: 10px 0;
-            }
-
-            .profile-container {
-                margin-top: 10px;
-                justify-content: space-between;
-                width: 100%;
-            }
-
-            .content-container {
-                padding: 10px;
-            }
-
-            .movie-list-wrapper {
-                flex-direction: column;
-            }
-
-            .movie-list {
-                flex-direction: column;
-            }
-
-            .movie-list-item {
-                width: 100%;
-                margin-bottom: 20px;
-            }
-        }
-        </style>
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .wb-nav-links { display: none; }
+      .page-hero-content { padding: 0 1.5rem 2.5rem; }
+      .filter-bar { padding: 1rem 1.5rem; }
+      .spotlight { margin: 2rem 1.5rem 0; }
+      .spotlight-content { max-width: 100%; padding: 2rem; }
+      .spotlight-art { display: none; }
+      .wb-section { padding: 2rem 1.5rem; }
+      .movie-grid { grid-template-columns: repeat(2, 1fr); }
+      .timeline-strip { margin: 0 1.5rem 2rem; }
+      .wb-footer { padding: 2.5rem 1.5rem 1.5rem; }
+      .wb-footer-cols { gap: 2rem; }
+    }
+  </style>
 </head>
-
 <body>
-    <div class="navbar">
-        <div class="navbar-container">
-            <div class="logo-container">
-                <h1 class="logo">Warner<span style="color:rgb(0, 102, 191)">Bros</span></h1>
-            </div>
-            <div class="menu-container">
-                <ul class="menu-list">
-                <li class="menu-list-item">
-                    <a href="index.html">Home</a>
-                </li>
-                <li class="menu-list-item active">
-                    <a href="movies.html">Movies</a>
-                </li>
-                <li class="menu-list-item">
-                    <a href="tvshows.html">TV Shows</a>
-                </li>
-                <li class="menu-list-item">
-                    <a href="gamesandapps.html">Games & Apps</a>
-                </li>
-                <li class="menu-list-item">
-                    <a href="brands.html">Collections</a>
-                </li>
-                <li class="nav-item menu-list-item">
-                    <a class="nav-link" href="newsandevents.html">News</a>
-                </li>
-                <li class="menu-list-item">
-                    <a href="onlinestore.html">Store</a>
-                </li>
-                <li class="menu-list-item">
-                    <a href="feedback.html">Feedback</a>
-                </li>           
-                <li class="nav-item menu-list-item">
-                    <a class="" href="aboutus.html">About</a>
-                </li>        
-                </ul>
-            </div>
-            <div class="profile-container">
-                <img class="profile-picture" src="Images/download.jpeg" alt="">
-                <div class="profile-text-container">
-                    <span class="profile-text">Profile</span>
-                    <i class="fas fa-caret-down"></i>
-                </div>
-                <div class="toggle">
-                    <i class="fas fa-moon toggle-icon"></i>
-                    <i class="fas fa-sun toggle-icon"></i>
-                    <div class="toggle-ball"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="content-container">
-            <div class="featured-content"
-                style="background: linear-gradient(to bottom, rgba(0,0,0,0), #151515), url('Images/background1.jpg');">
-                <img class="featured-title" src="Images/spacejam-title.png" alt="">
-                <p class="featured-desc">When LeBron James and his young son Dom are trapped in a digital space by a rogue A.I., LeBron must get them home safe by leading Bugs, Lola Bunny and the whole gang of notoriously undisciplined Looney Tunes to victory over the A.I.'s digitized champions on the court: a powered-up roster of professional ...</p>
-            </div>
-            <div class="movie-list-container">
-                <h1 class="movie-list-title">Now Playing</h1>
-                <div class="movie-list-wrapper">
-                    <div class="movie-list">
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="Images/1.jpeg" alt="">
-                            <span class="movie-list-item-title">Dune : Part Two</span>
-                            <p class="movie-list-item-desc">A noble family becomes embroiled in a war for control over the galaxy's most valuable asset while its heir becomes troubled by visions of a dark future.</p>
-                            <button class="movie-list-item-button">Out Now</button>
-                        </div>                        
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="Images/poster1.webp" alt="">
-                            <span class="movie-list-item-title">Joker</span>
-                            <p class="movie-list-item-desc">Joker 2 is coming to cinemas in October and we finally have the first trailer to savour for the highly-anticipated sequel</p>
-                            <button class="movie-list-item-button">Out Now</button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="Images/poster5.jpeg" alt="">
-                            <span class="movie-list-item-title">Wonka</span>
-                            <p class="movie-list-item-desc">With dreams of opening a shop in a city renowned for its chocolate, a young and poor Willy Wonka discovers that the industry is run by a cartel of greedy ...</p>
-                            <button class="movie-list-item-button">Out Now</button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="Images/3.webp" alt="">
-                            <span class="movie-list-item-title">Godzilla X Kong: The New Empire</span>
-                            <p class="movie-list-item-desc">Two ancient titans, Godzilla and Kong, clash in an epic battle as humans unravel their intertwined origins and connection to Skull Island's mysteries</p>
-                            <button class="movie-list-item-button">Coming Soon To Cinema</button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="Images/poster3.jpg" alt="">
-                            <span class="movie-list-item-title">BeetleJuice</span>
-                            <p class="movie-list-item-desc">Beetlejuice is back! After an unexpected family tragedy, three generations of the Deetz family.</p>
-                            <button class="movie-list-item-button">Coming Soon To Cinema</button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="Images/poster.jpg" alt="">
-                            <span class="movie-list-item-title">Furiosa : A Mad Max Saga</span>
-                            <p class="movie-list-item-desc">As the world fell, young Furiosa is snatched from the Green Place of Many Mothers and falls into the hands of a great Biker Horde led by the Warlord Dementus./p>
-                            <button class="movie-list-item-button">Coming Soon To Cinema</button>
-                        </div>
 
-                    </div>
-                    <i class="fas fa-chevron-right arrow"></i>
-                </div>
-            </div>
-            <div class="movie-list-container">
-                <h1 class="movie-list-title">Movies To Pick</h1>
-                <div class="movie-list-wrapper">
-                    <div class="movie-list">
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="Images/movie3.webp" alt="">
-                            <span class="movie-list-item-title">Tenet</span>
-                            <p class="movie-list-item-desc">Armed with only the word "Tenet," and fighting for the survival of the entire world, CIA operative, The Protagonist, journeys through a twilight world of ...</p>
-                            <button class="movie-list-item-button">Watch Trailer</button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="Images/movie2.webp" alt="">
-                            <span class="movie-list-item-title">Shazam Fury of the Gods</span>
-                            <p class="movie-list-item-desc">The film continues the story of teenage Billy Batson who, upon reciting the magic word “SHAZAM!” is transformed into his adult Super Hero alter ego, Shazam</p>
-                            <button class="movie-list-item-button">Watch Trailer</button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="Images/movie1.jpg" alt="">
-                            <span class="movie-list-item-title">Fantastic Beasts : Secrets of Dumbledore</span>
-                            <p class="movie-list-item-desc">Unable to stop him alone, he asks Newt Scamander to lead an intrepid team on a dangerous mission.Albus Dumbledore knows that Gellert Grindelwald is moving to ...</p>
-                            <button class="movie-list-item-button">Watch Trailer</button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="Images/poster9.jpg" alt="">
-                            <span class="movie-list-item-title">Magic Mike's Last Dance</span>
-                            <p class="movie-list-item-desc">Mike heads to London with a wealthy socialite who lures him with an offer he can't refuse.Mike takes to the stage again, following a business deal that went ...</p>
-                            <button class="movie-list-item-button">Watch Trailer</button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="Images/poster7.jpg" alt="">
-                            <span class="movie-list-item-title">Blue Beetle</span>
-                            <p class="movie-list-item-desc"></p>
-                            <button class="movie-list-item-button">Watch Trailer</button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="Images/poster6.webp" alt="">
-                            <span class="movie-list-item-title">Flash</span>
-                            <p class="movie-list-item-desc"></p>
-                            <button class="movie-list-item-button">Watch Trailer</button>
-                        </div>                        
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="Images/poster4.jpg" alt="">
-                            <span class="movie-list-item-title">Aquaman And The Lost Kingdom</span>
-                            <p class="movie-list-item-desc">Wielding the Black Trident's power, he becomes a formidable foe. To defend Atlantis, Aquaman forges an alliance with his imprisoned brother. They must protect ...</p>
-                            <button class="movie-list-item-button">Watch Trailer</button>
-                        </div>
-
-
-
-                    </div>
-                    <i class="fas fa-chevron-right arrow"></i>
-                </div>
-            </div>
-            <div class="featured-content"
-                style="background: linear-gradient(to bottom, rgba(0,0,0,0), #151515), url('video/yt5s.io-FURIOSA\ _\ A\ MAD\ MAX\ SAGA\ _\ Tickets\ on\ Sale\ Trailer-\(1080p\).mp4');">
-                <img class="featured-title" src="Images/poster.jpg" alt="">
-                <p class="featured-desc">Furiosa : Mad Max Saga</p>
-            </div>
-            <div class="movie-list-container">
-                <h1 class="movie-list-title">Animated</h1>
-                <div class="movie-list-wrapper">
-                    <div class="movie-list">
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="Images/poster10.jpg" alt="">
-                            <span class="movie-list-item-title">SCOOB!</span>
-                            <p class="movie-list-item-desc"></p>
-                            <button class="movie-list-item-button">Box Office</button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="Images/poster11.jpg" alt="">
-                            <span class="movie-list-item-title">Small Foot</span>
-                            <p class="movie-list-item-desc"></p>
-                            <button class="movie-list-item-button">Box Office</button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="Images/poster13.jpg" alt="">
-                            <span class="movie-list-item-title">Teen Titans GO! To The Movies</span>
-                            <p class="movie-list-item-desc"></p>
-                            <button class="movie-list-item-button">Box Office</button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="Images/poster12.jpg" alt="">
-                            <span class="movie-list-item-title">The Lego Movie</span>
-                            <p class="movie-list-item-desc"></p>
-                            <button class="movie-list-item-button">Box Office</button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="Images/poster3.jpg" alt="">
-                            <span class="movie-list-item-title">BeetleJuice</span>
-                            <p class="movie-list-item-desc"></p>
-                            <button class="movie-list-item-button">Box Office</button>
-                        </div>
-                    </div>
-                    <i class="fas fa-chevron-right arrow"></i>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script src="app.js"></script>
-</body>
-<footer>TM & © 2024 Warner Bros. Entertainment Inc. All rights reserved
-    <ul>
-        <li><a href="privacy-policy.html">Privacy Policy</a></li>
-        <li><a href="terms-of-use.html">Terms of Use</a></li>
-        <li><a href="contactus.html">Contact Us</a></li>
-
+  <!-- NAV -->
+  <nav class="wb-nav">
+    <a class="wb-logo" href="index.html">Warner<span>Bros</span></a>
+    <ul class="wb-nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="movies.html" class="active">Movies</a></li>
+      <li><a href="tvshows.html">TV Shows</a></li>
+      <li><a href="hboshows.html">HBO</a></li>
+      <li><a href="dc.html">DC</a></li>
+      <li><a href="gamesandapps.html">Games</a></li>
+      <li><a href="onlinestore.html">Store</a></li>
+      <li><a href="newsandevents.html">News</a></li>
     </ul>
-</footer>
+    <div class="wb-nav-actions">
+      <button class="wb-search-btn" aria-label="Search"><i class="ti ti-search"></i></button>
+      <button class="wb-signin-btn">Sign In</button>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-grid"></div>
+    <div class="page-hero-content">
+      <div class="page-hero-label">Warner Bros. Pictures</div>
+      <h1 class="page-hero-title">The Big <span>Screen</span></h1>
+      <p class="page-hero-sub">A century of cinema. Blockbusters, cult classics, and the films that defined generations — all in one place.</p>
+    </div>
+  </section>
+
+  <!-- FILTER BAR -->
+  <div class="filter-bar wb-fade-in">
+    <div class="filter-label">Browse by</div>
+    <div class="filter-chip active" onclick="setFilter(this)">All</div>
+    <div class="filter-chip" onclick="setFilter(this)">Action</div>
+    <div class="filter-chip" onclick="setFilter(this)">Drama</div>
+    <div class="filter-chip" onclick="setFilter(this)">Sci-Fi</div>
+    <div class="filter-chip" onclick="setFilter(this)">Comedy</div>
+    <div class="filter-chip" onclick="setFilter(this)">Horror</div>
+    <div class="filter-chip" onclick="setFilter(this)">Animation</div>
+    <div class="filter-chip" onclick="setFilter(this)">DC</div>
+    <div class="filter-chip" onclick="setFilter(this)">Thriller</div>
+    <div class="filter-chip" onclick="setFilter(this)">Fantasy</div>
+    <div class="filter-chip" onclick="setFilter(this)">Classics</div>
+  </div>
+
+  <!-- SPOTLIGHT -->
+  <div class="spotlight wb-fade-in">
+    <div class="spotlight-glow"></div>
+    <div class="spotlight-art">BATMAN</div>
+    <div class="spotlight-content">
+      <div class="spotlight-tag">Editor's Pick</div>
+      <div class="spotlight-title">The Batman</div>
+      <div class="spotlight-meta">
+        <div class="spotlight-rating"><i class="ti ti-star-filled"></i> 7.8</div>
+        <span class="spotlight-dot">·</span>
+        <span class="spotlight-year">2022</span>
+        <span class="spotlight-dot">·</span>
+        <span class="spotlight-runtime">2h 56m</span>
+        <span class="spotlight-dot">·</span>
+        <span class="spotlight-genre">Action / DC</span>
+      </div>
+      <p class="spotlight-desc">When a sadistic serial killer begins murdering key political figures in Gotham, Batman is forced to investigate the city's hidden corruption and question his family's involvement.</p>
+      <div class="spotlight-actions">
+        <button class="wb-btn-primary"><i class="ti ti-player-play"></i> Watch Now</button>
+        <button class="wb-btn-ghost"><i class="ti ti-bookmark"></i> Watchlist</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- NOW PLAYING -->
+  <section class="wb-section wb-fade-in">
+    <div class="wb-section-header">
+      <div>
+        <div class="wb-section-label">In Cinemas</div>
+        <div class="wb-section-title">Now Playing</div>
+      </div>
+      <a class="wb-view-all" href="#">All Releases <i class="ti ti-arrow-right"></i></a>
+    </div>
+    <div class="movie-grid">
+      <div class="movie-card gc-1">
+        <div class="card-badge badge-new">New</div>
+        <div class="movie-card-bg">FURIOSA</div>
+        <div class="movie-card-overlay"></div>
+        <div class="movie-card-info">
+          <div class="movie-card-genre">Action / Thriller</div>
+          <div class="movie-card-title">Furiosa: A Mad Max Saga</div>
+          <div class="movie-card-year">2024</div>
+          <button class="movie-card-btn"><i class="ti ti-player-play"></i> Watch</button>
+        </div>
+      </div>
+      <div class="movie-card gc-2">
+        <div class="card-badge badge-new">New</div>
+        <div class="movie-card-bg">BEETLEJUICE 2</div>
+        <div class="movie-card-overlay"></div>
+        <div class="movie-card-info">
+          <div class="movie-card-genre">Comedy / Horror</div>
+          <div class="movie-card-title">Beetlejuice Beetlejuice</div>
+          <div class="movie-card-year">2024</div>
+          <button class="movie-card-btn"><i class="ti ti-ticket"></i> Tickets</button>
+        </div>
+      </div>
+      <div class="movie-card gc-5">
+        <div class="movie-card-bg">GODZILLA × KONG</div>
+        <div class="movie-card-overlay"></div>
+        <div class="movie-card-info">
+          <div class="movie-card-genre">Action / Sci-Fi</div>
+          <div class="movie-card-title">Godzilla x Kong: The New Empire</div>
+          <div class="movie-card-year">2024</div>
+          <button class="movie-card-btn"><i class="ti ti-player-play"></i> Watch</button>
+        </div>
+      </div>
+      <div class="movie-card gc-3">
+        <div class="movie-card-bg">DUNE 2</div>
+        <div class="movie-card-overlay"></div>
+        <div class="movie-card-info">
+          <div class="movie-card-genre">Sci-Fi / Epic</div>
+          <div class="movie-card-title">Dune: Part Two</div>
+          <div class="movie-card-year">2024</div>
+          <button class="movie-card-btn"><i class="ti ti-player-play"></i> Watch</button>
+        </div>
+      </div>
+      <div class="movie-card gc-4">
+        <div class="movie-card-bg">AQUAMAN 2</div>
+        <div class="movie-card-overlay"></div>
+        <div class="movie-card-info">
+          <div class="movie-card-genre">Action / DC</div>
+          <div class="movie-card-title">Aquaman and the Lost Kingdom</div>
+          <div class="movie-card-year">2023</div>
+          <button class="movie-card-btn"><i class="ti ti-player-play"></i> Watch</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAN FAVORITES -->
+  <section class="wb-section wb-fade-in" style="padding-top: 0;">
+    <div class="wb-section-header">
+      <div>
+        <div class="wb-section-label">All Time</div>
+        <div class="wb-section-title">Fan Favorites</div>
+      </div>
+      <a class="wb-view-all" href="#">See All <i class="ti ti-arrow-right"></i></a>
+    </div>
+    <div class="movie-grid">
+      <div class="movie-card gc-1">
+        <div class="movie-card-bg">THE BATMAN</div>
+        <div class="movie-card-overlay"></div>
+        <div class="movie-card-info">
+          <div class="movie-card-genre">Action / DC</div>
+          <div class="movie-card-title">The Batman</div>
+          <div class="movie-card-year">2022</div>
+          <button class="movie-card-btn" onclick="location.href='Movie Pages/batman.html'"><i class="ti ti-player-play"></i> Watch</button>
+        </div>
+      </div>
+      <div class="movie-card gc-3">
+        <div class="movie-card-bg">BARBIE</div>
+        <div class="movie-card-overlay"></div>
+        <div class="movie-card-info">
+          <div class="movie-card-genre">Comedy / Fantasy</div>
+          <div class="movie-card-title">Barbie</div>
+          <div class="movie-card-year">2023</div>
+          <button class="movie-card-btn"><i class="ti ti-player-play"></i> Watch</button>
+        </div>
+      </div>
+      <div class="movie-card gc-5">
+        <div class="movie-card-bg">MATRIX</div>
+        <div class="movie-card-overlay"></div>
+        <div class="movie-card-info">
+          <div class="movie-card-genre">Sci-Fi / Action</div>
+          <div class="movie-card-title">The Matrix Resurrections</div>
+          <div class="movie-card-year">2021</div>
+          <button class="movie-card-btn"><i class="ti ti-player-play"></i> Watch</button>
+        </div>
+      </div>
+      <div class="movie-card gc-2">
+        <div class="movie-card-bg">WONDER WOMAN</div>
+        <div class="movie-card-overlay"></div>
+        <div class="movie-card-info">
+          <div class="movie-card-genre">Action / DC</div>
+          <div class="movie-card-title">Wonder Woman</div>
+          <div class="movie-card-year">2017</div>
+          <button class="movie-card-btn"><i class="ti ti-player-play"></i> Watch</button>
+        </div>
+      </div>
+      <div class="movie-card gc-4">
+        <div class="movie-card-bg">DUNE</div>
+        <div class="movie-card-overlay"></div>
+        <div class="movie-card-info">
+          <div class="movie-card-genre">Sci-Fi / Epic</div>
+          <div class="movie-card-title">Dune: Part One</div>
+          <div class="movie-card-year">2021</div>
+          <button class="movie-card-btn"><i class="ti ti-player-play"></i> Watch</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLASSICS -->
+  <section class="wb-section wb-fade-in" style="padding-top: 0;">
+    <div class="wb-section-header">
+      <div>
+        <div class="wb-section-label">The Vault</div>
+        <div class="wb-section-title">Timeless Classics</div>
+      </div>
+      <a class="wb-view-all" href="#">Explore Vault <i class="ti ti-arrow-right"></i></a>
+    </div>
+    <div class="movie-grid">
+      <div class="movie-card gc-6">
+        <div class="card-badge badge-classic">Classic</div>
+        <div class="movie-card-bg">CASABLANCA</div>
+        <div class="movie-card-overlay"></div>
+        <div class="movie-card-info">
+          <div class="movie-card-genre">Drama / Romance</div>
+          <div class="movie-card-title">Casablanca</div>
+          <div class="movie-card-year">1942</div>
+          <button class="movie-card-btn"><i class="ti ti-player-play"></i> Watch</button>
+        </div>
+      </div>
+      <div class="movie-card gc-7">
+        <div class="card-badge badge-classic">Classic</div>
+        <div class="movie-card-bg">A CLOCKWORK ORANGE</div>
+        <div class="movie-card-overlay"></div>
+        <div class="movie-card-info">
+          <div class="movie-card-genre">Drama / Sci-Fi</div>
+          <div class="movie-card-title">A Clockwork Orange</div>
+          <div class="movie-card-year">1971</div>
+          <button class="movie-card-btn"><i class="ti ti-player-play"></i> Watch</button>
+        </div>
+      </div>
+      <div class="movie-card gc-8">
+        <div class="card-badge badge-classic">Classic</div>
+        <div class="movie-card-bg">THE SHINING</div>
+        <div class="movie-card-overlay"></div>
+        <div class="movie-card-info">
+          <div class="movie-card-genre">Horror / Thriller</div>
+          <div class="movie-card-title">The Shining</div>
+          <div class="movie-card-year">1980</div>
+          <button class="movie-card-btn"><i class="ti ti-player-play"></i> Watch</button>
+        </div>
+      </div>
+      <div class="movie-card gc-9">
+        <div class="card-badge badge-classic">Classic</div>
+        <div class="movie-card-bg">BATMAN 1989</div>
+        <div class="movie-card-overlay"></div>
+        <div class="movie-card-info">
+          <div class="movie-card-genre">Action / DC</div>
+          <div class="movie-card-title">Batman</div>
+          <div class="movie-card-year">1989</div>
+          <button class="movie-card-btn"><i class="ti ti-player-play"></i> Watch</button>
+        </div>
+      </div>
+      <div class="movie-card gc-10">
+        <div class="card-badge badge-classic">Classic</div>
+        <div class="movie-card-bg">THE DARK KNIGHT</div>
+        <div class="movie-card-overlay"></div>
+        <div class="movie-card-info">
+          <div class="movie-card-genre">Action / DC</div>
+          <div class="movie-card-title">The Dark Knight</div>
+          <div class="movie-card-year">2008</div>
+          <button class="movie-card-btn"><i class="ti ti-player-play"></i> Watch</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMING SOON TIMELINE -->
+  <div class="timeline-strip wb-fade-in">
+    <div class="timeline-label">Upcoming Releases — 2024 / 2025</div>
+    <div class="timeline-items">
+      <div class="timeline-item active">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">Sep 2024</div>
+        <div class="timeline-name">Beetlejuice Beetlejuice</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">Oct 2024</div>
+        <div class="timeline-name">Joker: Folie à Deux</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">Nov 2024</div>
+        <div class="timeline-name">Venom: The Last Dance</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">Jun 2025</div>
+        <div class="timeline-name">Horizon: Part One</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2025</div>
+        <div class="timeline-name">The Batman Part II</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">TBA</div>
+        <div class="timeline-name">Horizon: Part Two</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="wb-footer wb-fade-in">
+    <div class="wb-footer-top">
+      <div>
+        <div class="wb-footer-logo">Warner<span>Bros</span></div>
+        <div class="wb-footer-tagline">A century of storytelling. Infinite worlds to explore.</div>
+      </div>
+      <div class="wb-footer-cols">
+        <div class="wb-footer-col">
+          <div class="wb-footer-col-title">Discover</div>
+          <ul>
+            <li><a href="movies.html">Movies</a></li>
+            <li><a href="tvshows.html">TV Shows</a></li>
+            <li><a href="hboshows.html">HBO</a></li>
+            <li><a href="dc.html">DC</a></li>
+            <li><a href="gamesandapps.html">Games and Apps</a></li>
+          </ul>
+        </div>
+        <div class="wb-footer-col">
+          <div class="wb-footer-col-title">Company</div>
+          <ul>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="newsandevents.html">News and Events</a></li>
+            <li><a href="brands.html">Brands</a></li>
+            <li><a href="contactus.html">Contact Us</a></li>
+            <li><a href="onlinestore.html">Online Store</a></li>
+          </ul>
+        </div>
+        <div class="wb-footer-col">
+          <div class="wb-footer-col-title">Support</div>
+          <ul>
+            <li><a href="feedback.html">Feedback</a></li>
+            <li><a href="terms-of-use.html">Terms of Use</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="contactus.html">Help Center</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="wb-footer-bottom">
+      <div class="wb-footer-copy">TM and © 2024 Warner Bros. Entertainment Inc. All rights reserved.</div>
+      <div class="wb-footer-links">
+        <a href="terms-of-use.html">Terms</a>
+        <a href="privacy-policy.html">Privacy</a>
+        <a href="contactus.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Filter chips
+    function setFilter(el) {
+      document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+      el.classList.add('active');
+    }
+
+    // Timeline dot click
+    document.querySelectorAll('.timeline-item').forEach(item => {
+      item.addEventListener('click', () => {
+        document.querySelectorAll('.timeline-item').forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+      });
+    });
+
+    // Scroll fade-in
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.wb-fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
 </html>
